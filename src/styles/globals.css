@@ -23,4 +23,7 @@ a {
     color: white;
     background: black;
   }
+  .arrow {
+    fill: white;
+  }
 }
