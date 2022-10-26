@@ -15,7 +15,7 @@ const Notification = ({
 }: AppProps) => {
 	const _getAnimationDuration = (duration: number) => `${duration / 1000}s`;
 
-	const _getTop = (order: number) => 20 + 96 * order;
+	const _getTop = (order: number) => 20 + 100 * order;
 
 	return (
 		<div

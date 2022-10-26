@@ -38,7 +38,7 @@ const notificationGenerator = ({icon, text, duration, className}:NotifyGenerator
 	setTimeout(() => {
 		notifications.shift();
 		root.render(<NotificationContainer notifications={notifications} />);
-	}, duration + 100);
+	}, duration + 500);
 };
 
 export default notificationGenerator
