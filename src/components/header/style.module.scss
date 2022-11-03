@@ -3,7 +3,14 @@
   min-height: 3.4375rem;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid var(--clr-gray);
+  border-bottom: 1px solid var(--clr-border);
+  font-size: 1.125rem;
+  font-weight: var(--fw-700);
+
+  &__post-number {
+    font-size: 0.8125rem;
+    color: var(--clr-gray);
+  }
 }
 
 .arrow {

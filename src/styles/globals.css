@@ -1,7 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap");
 
 :root {
-  --clr-gray: #E6ECF0;
+  --clr-border: #e6ecf0;
+  --clr-gray: #657786;
+
+  --fw-400: 400;
+  --fw-500: 500;
+  --fw-700: 700;
+  --fw-900: 900;
 }
 
 html,
@@ -16,6 +22,10 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+p {
+  margin: 0;
 }
 
 * {
