@@ -1,3 +1,5 @@
+import classes from "./style.module.scss"
+
 function Header({
   headerLeftButton = null,
   title = null,
@@ -8,7 +10,7 @@ function Header({
   headerRightButton?: JSX.Element | null
 }): JSX.Element {
   return (
-    <header>
+    <header className={classes.header}>
       {headerLeftButton}
       {title}
       {headerRightButton}

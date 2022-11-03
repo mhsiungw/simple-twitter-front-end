@@ -8,7 +8,6 @@ const Home: NextPage = () => {
     <>
       <div>Home</div>
       <Example message="example string" />
-      <Header title={<span>{"首頁"}</span>} />
       <Header
         headerLeftButton={<HeaderLeftButton />}
         title={<span>{"推文"}</span>}
