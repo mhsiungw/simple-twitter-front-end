@@ -1,0 +1,16 @@
+.modal {
+  padding: 0;
+  width: min(37.5rem, 100%);
+  border: none;
+  border-radius: 0.875rem;
+  
+  &:modal {
+    position: relative;
+    bottom: auto;
+    top: 7.25vmin;
+  }
+
+  &::backdrop {
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+}

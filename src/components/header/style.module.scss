@@ -3,7 +3,6 @@
   min-height: 3.4375rem;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid var(--clr-border);
   font-size: 1.125rem;
   font-weight: var(--fw-700);
 
@@ -15,4 +14,9 @@
 
 .arrow {
   margin-inline-end: 2.75rem;
+}
+
+.close-modal {
+  background-color: transparent;
+  border: none;
 }

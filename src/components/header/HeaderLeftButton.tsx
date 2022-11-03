@@ -1,14 +1,16 @@
 import { ICCloseModel, ICArrow } from "./icons"
-import classes from './style.module.scss'
+import classes from "./style.module.scss"
 
 function HeaderLeftButton({
-  currentUtility = ""
+  currentUtility = "",
+  onClick
 }: {
   currentUtility?: string
+  onClick?: () => void
 }): JSX.Element {
-  if (currentUtility === "model") {
+  if (currentUtility === "modal") {
     return (
-      <button>
+      <button className={classes["close-modal"]} onClick={onClick}>
         <ICCloseModel />
       </button>
     )
