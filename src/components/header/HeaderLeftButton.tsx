@@ -1,4 +1,5 @@
 import { ICCloseModel, ICArrow } from "./icons"
+import classes from './style.module.scss'
 
 function HeaderLeftButton({
   currentUtility = ""
@@ -15,7 +16,7 @@ function HeaderLeftButton({
     return <></>
   } else {
     return (
-      <a href="#">
+      <a href="#" className={classes.arrow}>
         <ICArrow />
       </a>
     )
