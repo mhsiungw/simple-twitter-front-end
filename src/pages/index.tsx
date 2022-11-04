@@ -3,6 +3,10 @@ import Example from "components/example"
 import { useState } from "react"
 import Modal from "components/modal"
 
+const fakeCurrentUser = {
+  avatar: ""
+}
+
 const Home: NextPage = () => {
   const [isOpened, setModalOpened] = useState(false)
   const openModal = () => setModalOpened(true)
@@ -11,7 +15,7 @@ const Home: NextPage = () => {
     <>
       <div onClick={openModal}>Home</div>
       <Example message="example string" />
-      <Modal isOpened={isOpened} onClose={closeModal} />
+      <Modal isOpened={isOpened} onClose={closeModal} currentUser={fakeCurrentUser} />
     </>
   )
 }

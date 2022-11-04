@@ -1,13 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap");
 
 :root {
+  --clr-white: #fff;
   --clr-border: #e6ecf0;
   --clr-gray: #657786;
+  --clr-button: #ff6600;
 
   --fw-400: 400;
   --fw-500: 500;
   --fw-700: 700;
   --fw-900: 900;
+
+  --fz-400: 1.125rem;
 }
 
 html,
@@ -30,6 +34,16 @@ p {
 
 * {
   box-sizing: border-box;
+}
+
+button {
+  border: 1px solid var(--clr-button);
+  color: var(--clr-button);
+  background-color: transparent;
+  border-radius: 99em;
+  text-align: center;
+  line-height: 1;
+  cursor: pointer;
 }
 
 /* @media (prefers-color-scheme: dark) {
