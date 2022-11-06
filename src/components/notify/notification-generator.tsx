@@ -11,6 +11,7 @@ export interface NotifyGeneratorProps {
 }
 
 const notifications: ReactElement[] = [];
+let notificationCount = 0;
 let root: Root, dom: HTMLElement | null;
 
 const notificationGenerator = ({icon, text, duration, className}:NotifyGeneratorProps) => {
@@ -26,19 +27,22 @@ const notificationGenerator = ({icon, text, duration, className}:NotifyGenerator
 	notifications.push(
 		<Notification
 			icon={icon}
-			key={text}
+			key={notificationCount}
 			text={text}
 			duration={duration}
 			className={className}
 			order={notifications.length}
 		/>
 	);
+	console.log('root', root);
 	root.render(<NotificationContainer notifications={notifications} />);
+	notificationCount++
 
 	setTimeout(() => {
 		notifications.shift();
 		root.render(<NotificationContainer notifications={notifications} />);
-	}, duration + 500);
+		notificationCount = 0
+	}, duration + 100);
 };
 
 export default notificationGenerator
