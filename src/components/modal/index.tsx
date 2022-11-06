@@ -54,7 +54,7 @@ export function Modal({
     }
   }, [isOpened, dialog, textarea])
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  function handleSubmit() {
     if (textarea) {
       console.log(textarea.value)
       // TODO post new tweet or reply
