@@ -1,6 +1,5 @@
 import type { NextPage } from "next"
 import Example from "components/example"
-import { useState } from "react"
 import { Modal, tweetsData, currentUser, useOpenModal } from "components/modal"
 
 const fakeCurrentUser: currentUser = {

@@ -20,7 +20,7 @@ export type tweetsData = {
   tweetsCreatedAt: number
 }
 
-export function useOpenModal():[boolean, () => void, () => void] {
+export function useOpenModal(): [boolean, () => void, () => void] {
   const [isOpened, setModalOpened] = useState(false)
   const openModal = () => setModalOpened(true)
   const closeModal = () => setModalOpened(false)
@@ -39,18 +39,27 @@ export function Modal({
   tweetsData?: tweetsData | null
 }) {
   const dialogRef = useRef<HTMLDialogElement>(null)
+  const textareaRef = useRef<HTMLTextAreaElement>(null)
+  const textarea = textareaRef.current
+  const dialog = dialogRef.current
+
   useEffect(() => {
-    const dialog = dialogRef.current
     if (isOpened && dialog) {
       dialog.showModal()
     } else {
       dialog?.close()
     }
-  }, [isOpened])
+    return () => {
+      if (textarea) textarea.value = ""
+    }
+  }, [isOpened, dialog, textarea])
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-    console.log(event)
+    if (textarea) {
+      console.log(textarea.value)
+      // TODO post new tweet or reply
+      textarea.value = ""
+    }
   }
   return (
     <dialog className={classes.modal} ref={dialogRef} onClose={onClose}>
@@ -77,10 +86,13 @@ export function Modal({
           onSubmit={handleSubmit}
           className={classes.modal__form}>
           <textarea
+            ref={textareaRef}
             placeholder={tweetsData ? "推你的回覆" : "有什麼新鮮事？"}
             className={classes.modal__textarea}></textarea>
           {/* 會用之後做好的button component */}
-          <button className={classes.modal__btn}>推文</button>
+          <button className={classes.modal__btn}>
+            {tweetsData ? "回覆" : "推文"}
+          </button>
         </form>
       </aside>
     </dialog>
