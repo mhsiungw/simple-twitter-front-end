@@ -1,7 +1,7 @@
 import Header from "components/header"
 import HeaderLeftButton from "components/header/HeaderLeftButton"
 import ReplyingTweets from "./replyingTweets"
-import { useRef, useEffect } from "react"
+import { useRef, useEffect, FormEvent } from "react"
 import classes from "./style.module.scss"
 import Image from "next/image"
 import fakePhoto from "src/assets/img/fake-photo.png"
@@ -37,7 +37,7 @@ export function Modal({
     }
   }, [isOpened])
 
-  function handleSubmit(event) {
+  function handleSubmit(event: FormEvent) {
     event.preventDefault()
     console.log(event)
   }
