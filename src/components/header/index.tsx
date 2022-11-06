@@ -8,7 +8,7 @@ function Header({
   headerLeftButton?: JSX.Element | null
   headerTitle?: JSX.Element | null
   headerRightButton?: JSX.Element | null
-}): JSX.Element {
+}) {
   return (
     <header className={classes.header}>
       {headerLeftButton}

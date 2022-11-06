@@ -26,7 +26,7 @@ export function Modal({
   onClose: () => void
   currentUser: { avatar: string }
   tweetsData?: tweetsData | null
-}): JSX.Element {
+}) {
   const dialogRef = useRef<HTMLDialogElement>(null)
   useEffect(() => {
     const dialog = dialogRef.current
@@ -37,7 +37,7 @@ export function Modal({
     }
   }, [isOpened])
 
-  function handleSubmit(event: FormEvent) {
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     console.log(event)
   }

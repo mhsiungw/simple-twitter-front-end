@@ -7,7 +7,7 @@ function HeaderLeftButton({
 }: {
   currentUtility?: string
   onClick?: () => void
-}): JSX.Element {
+}) {
   if (currentUtility === "modal") {
     return (
       <button className={classes["close-modal"]} onClick={onClick}>
