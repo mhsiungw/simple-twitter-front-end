@@ -1,9 +1,9 @@
 import type { NextPage } from "next"
 import Example from "components/example"
 import { useState } from "react"
-import { Modal, tweetsData } from "components/modal"
+import { Modal, tweetsData, currentUser, useOpenModal } from "components/modal"
 
-const fakeCurrentUser = {
+const fakeCurrentUser: currentUser = {
   avatar: ""
 }
 
@@ -19,9 +19,7 @@ const fakeReplyingTweets: tweetsData = {
 }
 
 const Home: NextPage = () => {
-  const [isOpened, setModalOpened] = useState(false)
-  const openModal = () => setModalOpened(true)
-  const closeModal = () => setModalOpened(false)
+  const [isOpened, openModal, closeModal] = useOpenModal()
   return (
     <>
       <div onClick={openModal}>Home</div>

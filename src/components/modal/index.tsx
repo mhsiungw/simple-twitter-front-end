@@ -1,10 +1,14 @@
 import Header from "components/header"
 import HeaderLeftButton from "components/header/HeaderLeftButton"
 import ReplyingTweets from "./replyingTweets"
-import { useRef, useEffect, FormEvent } from "react"
+import { useState, useRef, useEffect, FormEvent } from "react"
 import classes from "./style.module.scss"
 import Image from "next/image"
 import fakePhoto from "src/assets/img/fake-photo.png"
+
+export type currentUser = {
+  avatar: string
+}
 
 export type tweetsData = {
   tweetsContent: string
@@ -16,6 +20,13 @@ export type tweetsData = {
   tweetsCreatedAt: number
 }
 
+export function useOpenModal():[boolean, () => void, () => void] {
+  const [isOpened, setModalOpened] = useState(false)
+  const openModal = () => setModalOpened(true)
+  const closeModal = () => setModalOpened(false)
+  return [isOpened, openModal, closeModal]
+}
+
 export function Modal({
   isOpened,
   onClose,
@@ -24,7 +35,7 @@ export function Modal({
 }: {
   isOpened: boolean
   onClose: () => void
-  currentUser: { avatar: string }
+  currentUser: currentUser
   tweetsData?: tweetsData | null
 }) {
   const dialogRef = useRef<HTMLDialogElement>(null)
