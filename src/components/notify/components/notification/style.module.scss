@@ -16,8 +16,9 @@
 	color: black;
 	border-radius: 8px;
 
-	animation-name: slideIn;
 	animation-timing-function: ease-in;
+	animation-duration: 3s;
+	animation-fill-mode: forwards;
 
 	p {
 		font-family: 'Roboto', sans-serif;
@@ -25,28 +26,43 @@
 		font-size: 20px;
 	}
 
-	:global(.icon) {
-		width: 56px;
-		height: 56px;
-		border-radius: 50%;
-		text-align: center;
-	}
+	:global {
+		.icon {
+			width: 56px;
+			height: 56px;
+			border-radius: 50%;
+			text-align: center;
+		}
+		.success {
+			background-color: rgba(130, 196, 60, 0.1);
+			line-height: 56px;
+		}
 
-	:global(.success) {
-		background-color: rgba(130, 196, 60, 0.1);
-		line-height: 56px;
+		.error {
+			background-color: rgba(252, 90, 90, 0.1);
+			line-height: 62px;
+		}
 	}
-	
-	:global(.error) {
-		background-color: rgba(252, 90, 90, 0.1);
-		line-height: 62px;
-	}	
+}
+
+.slideIn {
+	animation-name: slideIn;
+}
+
+.slideOut {
+	animation-name: slideOut;
 }
 
 @keyframes slideIn {
 	0% {right: -282px}
 	5% {right: 40px}
 	10% {right: 20px}
-	95% {right: 20px}
+	100% {right: 20px}
+}
+
+@keyframes slideOut {
+	0% {right: 20px}
+	2% {right: 40px}
+	3% {right: -282px}
 	100% {right: -282px}
 }
