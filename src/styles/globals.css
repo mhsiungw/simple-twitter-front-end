@@ -4,14 +4,18 @@
   --clr-white: #fff;
   --clr-border: #e6ecf0;
   --clr-gray: #657786;
-  --clr-button: #ff6600;
+  --clr-primary: #ff6600;
 
   --fw-400: 400;
   --fw-500: 500;
   --fw-700: 700;
   --fw-900: 900;
 
+  --fz-200: 0.8125rem;
+  --fz-300: 0.9375rem;
   --fz-400: 1.125rem;
+
+  --space-4: 1.125rem;
 }
 
 html,
@@ -37,8 +41,8 @@ p {
 }
 
 button {
-  border: 1px solid var(--clr-button);
-  color: var(--clr-button);
+  border: 1px solid var(--clr-primary);
+  color: var(--clr-primary);
   background-color: transparent;
   border-radius: 99em;
   text-align: center;
