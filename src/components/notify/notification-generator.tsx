@@ -24,6 +24,10 @@ const notificationGenerator = ({icon, text, duration, className}:NotifyGenerator
 		root = createRoot(dom);
 	}
 
+	if (root === null && dom) {
+		root = createRoot(dom);
+	}
+
 	notifications.push(
 		<Notification
 			icon={icon}
