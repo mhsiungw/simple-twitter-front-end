@@ -1,3 +1,35 @@
 {
-  "extends": "next/core-web-vitals"
+	"plugins": [
+		"react",
+		"@typescript-eslint"
+	],
+	"extends": [
+		"next/core-web-vitals",
+		"eslint:recommended",
+		"plugin:react/recommended",
+		"plugin:@typescript-eslint/recommended"
+	],
+	"parser": "@typescript-eslint/parser",
+	"rules": {
+		"quotes": ["error", "double"],
+		"indent": ["error", "tab"],
+    "semi": "off",
+    "@typescript-eslint/semi":["error", "always"],
+		"no-extra-semi": "off",
+    "@typescript-eslint/no-extra-semi": "off",
+		"@typescript-eslint/member-delimiter-style": [
+			"error",
+			{
+					"multiline": {
+							"delimiter": "comma",
+							"requireLast": true
+					},
+					"singleline": {
+							"delimiter": "semi",
+							"requireLast": false
+					}
+			}
+	],
+	"eol-last": 2
+	}
 }
