@@ -1,6 +1,8 @@
+import React from "react";
+
 type AppProps = {
-	message: string;
-}
+	message: string,
+};
 
 const Example = (props: AppProps) => <div>Example input: {props.message}</div>;
 
