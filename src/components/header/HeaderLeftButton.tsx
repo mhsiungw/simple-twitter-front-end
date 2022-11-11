@@ -18,7 +18,8 @@ function HeaderLeftButton({
     return <></>
   } else {
     return (
-      <a href="#" className={classes.arrow}>
+      // TODO: a不要使用href的方式傳遞
+      <a className={classes.arrow} onClick={onClick}>
         <ICArrow />
       </a>
     )

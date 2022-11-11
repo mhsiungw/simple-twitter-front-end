@@ -39,23 +39,3 @@ p {
 * {
   box-sizing: border-box;
 }
-
-button {
-  border: 1px solid var(--clr-primary);
-  color: var(--clr-primary);
-  background-color: transparent;
-  border-radius: 99em;
-  text-align: center;
-  line-height: 1;
-  cursor: pointer;
-}
-
-/* @media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
-} */
