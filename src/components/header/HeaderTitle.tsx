@@ -1,6 +1,6 @@
 import classes from "./style.module.scss"
 
-function HeaderTitle({ title = "" }: { title?: string | [string, string] }) {
+function HeaderTitle({ title = "" }: { title?: string | [string, string] }):JSX.Element {
   if (typeof title === "string") {
     return <span>{title}</span>
   }

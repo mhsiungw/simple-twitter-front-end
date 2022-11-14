@@ -3,14 +3,14 @@ import classes from "./style.module.scss"
 
 function HeaderLeftButton({
   currentUtility = "",
-  onClick
+  handleClick
 }: {
   currentUtility?: string
-  onClick?: () => void
-}) {
+  handleClick?: () => void
+}): JSX.Element {
   if (currentUtility === "modal") {
     return (
-      <button className={classes["close-modal"]} onClick={onClick}>
+      <button className={classes["close-modal"]} onClick={handleClick}>
         <ICCloseModel />
       </button>
     )
@@ -18,8 +18,7 @@ function HeaderLeftButton({
     return <></>
   } else {
     return (
-      // TODO: a不要使用href的方式傳遞
-      <a className={classes.arrow} onClick={onClick}>
+      <a className={classes.arrow} onClick={handleClick}>
         <ICArrow />
       </a>
     )
