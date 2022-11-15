@@ -62,7 +62,7 @@ export function Modal({
     <dialog className={classes.modal} ref={dialogRef} onClose={onClose}>
       <Header
         headerLeftButton={
-          <HeaderLeftButton currentUtility="modal" onClick={onClose} />
+          <HeaderLeftButton currentUtility="modal" handleClick={onClose} />
         }
       />
       {tweetsData && <ReplyingTweets tweetsData={tweetsData} />}
