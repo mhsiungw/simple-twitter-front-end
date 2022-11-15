@@ -1,6 +1,6 @@
 import Header from "components/header"
-import HeaderLeftButton from "components/header/HeaderLeftButton"
-import ReplyingTweets from "./replyingTweets"
+import HeaderLeftButton from "components/header/header-left-button"
+import ReplyingTweets from "./replying-tweets"
 import { useState, useRef, useEffect } from "react"
 import classes from "./style.module.scss"
 import Image from "next/image"
