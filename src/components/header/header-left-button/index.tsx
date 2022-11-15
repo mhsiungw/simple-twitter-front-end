@@ -1,4 +1,4 @@
-import { ICCloseModel, ICArrow } from "./icons"
+import { ICCloseModel, ICArrow } from "../icons"
 import classes from "./style.module.scss"
 
 function HeaderLeftButton({
