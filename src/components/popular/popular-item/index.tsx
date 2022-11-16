@@ -1,3 +1,4 @@
+import Button from "../../button";
 import styles from "./style.module.scss";
 
 interface PopularItem {
@@ -19,21 +20,11 @@ function PopularItem({ username, account, avatar, isFollowed }: PopularItem) {
         <span>{username}</span>
         <span className={styles.account}>@{account}</span>
       </div>
-      {isFollowed === 1 ? (
-        <button
-          className={styles.followingBtn}
-          onClick={() => handleFollowClick()}
-        >
-          正在跟隨
-        </button>
-      ) : (
-        <button
-          className={styles.followBtn}
-          onClick={() => handleFollowClick()}
-        >
-          跟隨
-        </button>
-      )}
+      <Button
+        className={isFollowed === 1 ? styles.followingBtn : styles.followBtn}
+        children={isFollowed === 1 ? "正在跟隨" : "跟隨"}
+        onClick={() => handleFollowClick()}
+      />
     </li>
   );
 }

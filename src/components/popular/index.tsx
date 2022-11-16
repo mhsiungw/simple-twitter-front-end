@@ -1,4 +1,4 @@
-import PopularItem from "./popular-item/popular-item";
+import PopularItem from "./popular-item";
 import styles from "./style.module.scss";
 
 const Popular = () => {

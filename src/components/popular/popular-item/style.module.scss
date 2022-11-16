@@ -31,13 +31,20 @@
     top: 50%;
     right: 15px;
     transform: translateY(-50%);
+    button {
+      padding: 10px 15px;
+      height: 35px;
+      @include flex-center();
+      cursor: pointer;
+    }
   }
-  .followBtn {
-    @include btn;
-    @include whiteBtn;
+  .followingBtn button {
+    width: 90px;
   }
-  .followingBtn {
-    @include btn;
-    @include orangeBtn;
+  .followBtn button {
+    width: 60px;
+    background-color: transparent;
+    border: 1px solid #ff6600;
+    color: #ff6600;
   }
 }
