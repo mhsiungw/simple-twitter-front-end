@@ -3,20 +3,20 @@ import cx from "classnames";
 import classes from "./style.module.scss";
 
 interface ButtonProps {
-	className?: string,
-	children?: ReactNode,
-	size?: string,
-	disabled?: boolean,
-	loading?: boolean,
-	loadingText?: string,
-	onClick?: () => void,
-};
+  className?: string,
+  children?: ReactNode,
+  size?: string,
+  disabled?: boolean,
+  loading?: boolean,
+  loadingText?: string,
+  onClick?: () => void,
+}
 
 interface SizeEnumsType {
-	SMALL: string,
-	MIDDLE: string,
-	LARGE: string,
-};
+  SMALL: string,
+  MIDDLE: string,
+  LARGE: string,
+}
 
 const SizeEnums: SizeEnumsType = {
 	SMALL: classes.sm,
@@ -46,8 +46,9 @@ const Button = ({
 			<button
 				className={cx(
 					"button",
-					SizeEnums[size?.toUpperCase() as keyof SizeEnumsType] || SizeEnums["SMALL"],
-					classes.button,
+					SizeEnums[size?.toUpperCase() as keyof SizeEnumsType] ||
+            SizeEnums["SMALL"],
+					classes.button
 				)}
 				onClick={onClick}
 				disabled={disabled}
