@@ -1,7 +1,15 @@
 import styles from "./style.module.scss";
-function PopularItem({ item }) {
-  const { username, account, avatar, isFollowed } = item;
+
+interface PopularItem {
+  username: string;
+  account: string;
+  avatar?: string;
+  isFollowed: number;
+}
+
+function PopularItem({ username, account, avatar, isFollowed }: PopularItem) {
   const handleFollowClick = () => {
+    // Todo: post add/remove follow api
     console.log("!!!handleFollowClick");
   };
   return (

@@ -1,4 +1,4 @@
-import PopularItem from "./PopularItem";
+import PopularItem from "./popular-item/popular-item";
 import styles from "./style.module.scss";
 
 const Popular = () => {
@@ -37,7 +37,7 @@ const Popular = () => {
       <div className={styles.title}>Popular</div>
       <ul className={styles.popularList}>
         {popularList.map((item, idx) => (
-          <PopularItem item={item} key={idx} />
+          <PopularItem {...item} key={idx} />
         ))}
       </ul>
     </div>

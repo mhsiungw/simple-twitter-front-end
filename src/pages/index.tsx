@@ -6,9 +6,6 @@ import SideBar from "components/sideBar";
 const Home: NextPage = () => {
   return (
     <>
-      <div>Home</div>
-      <Example message="example string" />
-      <Popular />
       <SideBar />
     </>
   );
