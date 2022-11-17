@@ -1,10 +1,12 @@
-import { useState, useEffect } from 'react';
-import cx from 'classnames';
-import classes from './style.module.scss';
-import { NotifyGeneratorProps } from '../../notification-generator';
+
+import React from "react";
+import { useState, useEffect } from "react";
+import cx from "classnames";
+import classes from "./style.module.scss";
+import { NotifyGeneratorProps } from "../../notification-generator";
 
 interface AppProps extends NotifyGeneratorProps {
-	order: number;
+	order: number,
 }
 
 const Notification = ({
@@ -34,7 +36,7 @@ const Notification = ({
 			}}
 		>
 			<p>{text}</p>
-			<i className={cx('icon', className)}>
+			<i className={cx("icon", className)}>
 				<Icon />
 			</i>
 		</div>
