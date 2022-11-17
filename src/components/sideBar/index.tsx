@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Image from "next/image";
 import logo from "./icons/logo.svg";
 import member from "./icons/member.svg";
 import memberActive from "./icons/member-active.svg";
@@ -52,10 +53,10 @@ const sideBarList = [
     isAdmin: true,
   },
 ];
-const sideBar = () => {
+const SideBar = () => {
   //Todo: get isUserAdmin from localStorage
   const isUserAdmin = false;
-  const [activeItem, setActiveItem] = useState("home");
+  const [activeItem, setActiveItem] = useState<string>("home");
   const filterSideMenu = sideBarList.filter(
     (item) => item.isAdmin === isUserAdmin
   );
@@ -63,13 +64,13 @@ const sideBar = () => {
     setActiveItem(type);
   };
   const handleLogout = () => {
-    // Todo: logout api
+    // Todo: logout
     console.log("logout");
-  }; 
+  };
   return (
     <div className={styles.wrapper}>
       <div className={styles.content}>
-        <img className={styles.logo} src={logo.src} alt="logo" />
+        <Image className={styles.logo} src={logo.src} alt="logo" />
         <ul className={styles.sideBarList}>
           {filterSideMenu.map((item, idx) => (
             <li
@@ -79,7 +80,7 @@ const sideBar = () => {
               key={idx}
               onClick={() => toggleSideMenu(item.type)}
             >
-              <img
+              <Image
                 className={styles.sideBarLogo}
                 src={
                   activeItem === item.type ? item.iconActive.src : item.icon.src
@@ -91,7 +92,7 @@ const sideBar = () => {
           ))}
         </ul>
         <div className={styles.logout} onClick={() => handleLogout}>
-          <img
+          <Image
             className={styles.sideBarLogo}
             src={logout.src}
             alt="side-bar-item"
@@ -103,4 +104,4 @@ const sideBar = () => {
   );
 };
 
-export default sideBar;
+export default SideBar;
