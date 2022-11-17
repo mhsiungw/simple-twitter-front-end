@@ -1,41 +1,39 @@
 .button {
-	font-family: 'Noto Sans TC';
-	font-weight: 700;
-	font-size: 15px;
+  font-family: "Noto Sans TC";
+  font-weight: 700;
+  font-size: 15px;
 
-	background-color: #FF6600;
+  background-color: #ff6600;
 
-	border: none;
-	border-radius: 100px;
+  border: none;
+  border-radius: 100px;
+  &:hover {
+    background-color: #ff6600b0;
+  }
 
+  &:disabled {
+    background-color: #696969;
+    color: #faf0e6;
+    cursor: not-allowed;
+  }
 
-	&:hover {
-		background-color: #ff6600b0;
-	}
-
-	&:disabled {
-		background-color: #696969;
-		color: #faf0e6;
-		cursor: not-allowed;
-	}
-
-	&:active {
-		scale: 1.02;
-	}
+  &:active {
+    scale: 1.02;
+  }
 }
 
 .sm {
-	min-width: 66px;
-	min-height: 38px;
+  min-width: 66px;
+  min-height: 38px;
 }
 
 .md {
-	min-width: 116px;
-	min-height: 46px;
+  min-width: 116px;
+  min-height: 46px;
 }
 
 .lg {
-	min-width: 540px;
-	min-height: 46px;
-	font-size: 16px;
+  min-width: 540px;
+  min-height: 46px;
+  font-size: 16px;
 }

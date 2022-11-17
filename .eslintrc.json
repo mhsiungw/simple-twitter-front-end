@@ -1,8 +1,5 @@
 {
-	"plugins": [
-		"react",
-		"@typescript-eslint"
-	],
+	"plugins": ["react", "@typescript-eslint"],
 	"extends": [
 		"next/core-web-vitals",
 		"eslint:recommended",
@@ -13,23 +10,23 @@
 	"rules": {
 		"quotes": ["error", "double"],
 		"indent": ["error", "tab"],
-    "semi": "off",
-    "@typescript-eslint/semi":["error", "always"],
+		"semi": "off",
+		"@typescript-eslint/semi": ["error", "always"],
 		"no-extra-semi": "off",
-    "@typescript-eslint/no-extra-semi": "off",
+		"@typescript-eslint/no-extra-semi": "off",
 		"@typescript-eslint/member-delimiter-style": [
 			"error",
 			{
-					"multiline": {
-							"delimiter": "comma",
-							"requireLast": true
-					},
-					"singleline": {
-							"delimiter": "semi",
-							"requireLast": false
-					}
+				"multiline": {
+					"delimiter": "comma",
+					"requireLast": true
+				},
+				"singleline": {
+					"delimiter": "semi",
+					"requireLast": false
+				}
 			}
-	],
-	"eol-last": 2
+		],
+		"eol-last": 2
 	}
 }
