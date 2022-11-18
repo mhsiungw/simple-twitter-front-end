@@ -1,0 +1,61 @@
+
+.tweetCard {
+    border-bottom: 1px solid #e6ecf0;
+    width: 100%;
+    padding: 15px;
+    display: flex;
+    .tweetCardImg {
+			img{width: 50px;
+        height: 50px;
+        border-radius: 50%;}
+        
+    }
+}
+
+.tweetCardContent {
+    flex: 1;
+    margin: 0 10px;
+    display: flex;
+    flex-direction: column;
+    .tweetCardContentInfo {
+        .name {
+            font-weight: 700;
+            color: #1c1c1c;
+        }
+        .account {
+            margin: 0 5px;
+            color: #657786;
+        }
+        .createdAt {
+            color: #657786;
+            &::before {
+                content: "•";
+                margin-right: 5px;
+            }
+        }
+    }
+   .tweetCardContentText {
+        margin: 5px 0;
+        color: #1c1c1c;
+    }
+    .tweetCardContentReply {
+        display: flex;
+        .contentReply {
+            display: flex;
+            align-items: center;
+            width: 80px;
+            cursor: pointer;
+            img {
+                width: 15px;
+                height: 15px;
+                margin-right: 10px;
+            }
+           .contentReplyNumber {
+                color: #657786;
+            }
+            .active {
+                color: #E0245E;
+            }
+        }
+    }
+}

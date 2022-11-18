@@ -11,7 +11,7 @@ import Reply from '../reply/index'
 
 
 
-interface TweetProps {
+interface TweetInfoProps {
 	className?: string;
 	children?: ReactNode;
 	tweetInfo: TweetResponse;
@@ -20,7 +20,7 @@ interface TweetProps {
 }
 
 
-const Tweet = ({ tweetInfo, user }: TweetProps) => {
+const Tweet = ({ tweetInfo, user }: TweetInfoProps) => {
 	return (
 		<div className={classes.container}>
 			<div className={classes.tweetCard}>

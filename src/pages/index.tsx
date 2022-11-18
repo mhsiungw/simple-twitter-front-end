@@ -2,6 +2,7 @@ import React from "react";
 import type { NextPage } from "next";
 import Example from "components/example";
 import TweetComponent from "components/tweetInfo/index"
+import Tweets from "components/tweet/index"
 
 
 interface Tweet {
@@ -10,6 +11,7 @@ interface Tweet {
 	description: string;
 	createdAt: Date,
 	updatedAt: Date,
+
 }
 
 export interface User {
@@ -38,6 +40,14 @@ export interface TweetResponse {
 		reply: Reply
 		user: User
 	}]
+}
+
+export interface TweetDisplay {
+	tweet: Tweet,
+	likeCount: number,
+	replyCount: number,
+	isLiked: boolean,
+	user: User,
 }
 
 
@@ -80,11 +90,32 @@ const Home: NextPage = () => {
 		avatarImg: "https://i.imgur.com/dDNedqE.jpeg",
 	};
 
+	const tweet: TweetDisplay = {
+		tweet: {
+			id: '123',
+			userId: '1234',
+			description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip',
+			createdAt: new Date(),
+			updatedAt: new Date(),
+		},
+		likeCount: 10,
+		replyCount: 2,
+		isLiked: true,
+		user: {
+			id: '123',
+			account: 'testAcc',
+			name: 'Han',
+			email: "hi@hi.com",
+			avatarImg: "https://i.imgur.com/dDNedqE.jpeg",
+		}
+	}
+
 	return (
 		<>
 			<div>Home</div>
 			<Example message="example string" />
 			<TweetComponent tweetInfo={tweetInfo} user={user} />
+			<Tweets tweet={tweet} />
 		</>
 	);
 };
