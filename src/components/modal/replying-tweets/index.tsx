@@ -3,7 +3,7 @@ import Image from "next/image"
 import fakePhoto from "src/assets/img/fake-photo.png"
 import classes from "../style.module.scss"
 
-function ReplyingTweets({ tweetsData }: { tweetsData: tweetsData }) {
+const ReplyingTweets = ({ tweetsData }: { tweetsData: tweetsData }) => {
   return (
     <aside
       className={`${classes["modal__replying-tweet"]} ${classes.modal_border}`}>

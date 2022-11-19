@@ -1,18 +1,35 @@
+import { useEffect, useRef } from "react"
+import classes from "./style.module.scss"
+
 type props = {
-  onClose: () => {},
-  handleSubmit: () => {},
-  content: JSX.Element,
-  formContent: JSX.Element
+  children: JSX.Element
+  isVisible: boolean
+  onDialogClose: () => void
+  onDialogSubmit?: () => {}
 }
 
-const ModalTemplate = (props: props) => {
+const ModalTemplate = ({
+  isVisible,
+  children,
+  onDialogSubmit,
+  onDialogClose
+}: props) => {
+  const dialogRef = useRef<HTMLDialogElement>(null)
+  useEffect(() => {
+    const dialog = dialogRef.current
+    if (isVisible) {
+      dialog?.showModal()
+    } else {
+      dialog?.close()
+    }
+  }, [isVisible])
   return (
-    <dialog onClose={props.onClose}>
-      {props.content}
-      <form method="dialog" onSubmit={props.handleSubmit}>
-        {props.formContent}
-        {/* Button */}
-      </form>
+    <dialog
+      ref={dialogRef}
+      className={classes.modal}
+      onSubmit={onDialogSubmit}
+      onClose={onDialogClose}>
+      {children}
     </dialog>
   )
 }
