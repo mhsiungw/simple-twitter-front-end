@@ -1,7 +1,6 @@
 import React from "react";
 import type { NextPage } from "next";
 import Example from "components/example";
-import TweetComponent from "components/tweetInfo/index"
 import Tweets from "components/tweet/index"
 
 
@@ -114,7 +113,6 @@ const Home: NextPage = () => {
 		<>
 			<div>Home</div>
 			<Example message="example string" />
-			<TweetComponent tweetInfo={tweetInfo} user={user} />
 			<Tweets tweet={tweet} />
 		</>
 	);
