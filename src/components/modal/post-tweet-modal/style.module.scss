@@ -1,0 +1,37 @@
+.post-modal {
+  padding: 0.9375rem;
+  border-top: 1px solid var(--clr-border);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.625rem;
+  min-height: 15.3125rem;
+  font-size: var(--fz-400);
+}
+
+.avatar {
+  width: 3.125rem;
+}
+
+.form {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  gap: 0.625rem;
+  padding-block-start: 0.75rem;
+
+  &__btn {
+    margin-inline-start: auto;
+    & button {
+      font-size: 1.125rem;
+      padding: 0.625rem 0.9375rem;
+      color: var(--clr-white);
+      font-weight: var(--fw-500);
+      cursor: pointer;
+    }
+  }
+}
+
+.textarea {
+  border: none;
+  resize: none;
+  font-size: inherit;
+}

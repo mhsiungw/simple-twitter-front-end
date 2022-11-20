@@ -1,19 +1,13 @@
 import { useEffect, useRef } from "react"
 import classes from "./style.module.scss"
 
-type props = {
-  children: JSX.Element
+interface ModalProps {
+  children?: JSX.Element
   isVisible: boolean
   onDialogClose: () => void
-  onDialogSubmit?: () => {}
 }
 
-const ModalTemplate = ({
-  isVisible,
-  children,
-  onDialogSubmit,
-  onDialogClose
-}: props) => {
+const ModalTemplate = ({ isVisible, children, onDialogClose }: ModalProps) => {
   const dialogRef = useRef<HTMLDialogElement>(null)
   useEffect(() => {
     const dialog = dialogRef.current
@@ -24,14 +18,10 @@ const ModalTemplate = ({
     }
   }, [isVisible])
   return (
-    <dialog
-      ref={dialogRef}
-      className={classes.modal}
-      onSubmit={onDialogSubmit}
-      onClose={onDialogClose}>
+    <dialog ref={dialogRef} className={classes.modal} onClose={onDialogClose}>
       {children}
     </dialog>
   )
 }
 
-export default ModalTemplate
+export { ModalTemplate, type ModalProps }
