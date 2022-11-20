@@ -1,11 +1,5 @@
-import { useEffect, useState } from "react";
 import { ReactNode } from "react";
 import classes from "./style.module.scss";
-import classNamees from "./style.module.scss";
-import exitIcon from "src/assets/images/exit-icon.svg";
-import commentIcon from "src/assets/images/comment-icon.svg";
-import likeIcon from "src/assets/images/like-icon.svg";
-import likedIcon from "src/assets/images/liked-icon.svg";
 import { TweetDisplay } from 'src/pages/index';
 
 
