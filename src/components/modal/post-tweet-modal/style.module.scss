@@ -1,15 +1,10 @@
 .post-modal {
   padding: 0.9375rem;
-  border-top: 1px solid var(--clr-border);
   display: grid;
   grid-template-columns: auto 1fr;
   gap: 0.625rem;
   min-height: 15.3125rem;
   font-size: var(--fz-400);
-}
-
-.avatar {
-  width: 3.125rem;
 }
 
 .form {

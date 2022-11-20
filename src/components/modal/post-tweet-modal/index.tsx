@@ -7,8 +7,10 @@ import fakePhoto from "../../../assets/img/fake-photo.png"
 import classes from "./style.module.scss"
 import { useRef } from "react"
 import Button from "../../button"
+import modalClasses from "../style.module.scss"
 
 interface PostTweetModalProps extends ModalProps {
+  postApi: () => void
   currentUser: {
     readonly avatar?: string
     readonly id: string
@@ -16,9 +18,13 @@ interface PostTweetModalProps extends ModalProps {
 }
 
 const PostTweetModal = ({
+  // ! isVisible 應該可以改成由外層傳入ref去變動
+  // ! 所以由外層元件決定就好，根本不需要傳入
   isVisible,
   onDialogClose,
-  currentUser
+  children,
+  currentUser,
+  postApi
 }: PostTweetModalProps) => {
   const textareaRef = useRef<HTMLTextAreaElement>(null)
   const handleFormSubmit = () => {
@@ -26,6 +32,7 @@ const PostTweetModal = ({
     // TODO 傳送新的推文
     if (textarea !== null && textarea.value !== "") {
       console.log(textarea.value)
+      postApi()
       textarea.value = ""
     }
   }
@@ -47,8 +54,12 @@ const PostTweetModal = ({
             />
           }
         />
-        <aside className={classes["post-modal"]}>
-          <div className={classes.avatar}>
+        {children}
+        <aside
+          className={`${classes["post-modal"]} ${
+            children ? "" : modalClasses.border_top
+          }`}>
+          <div className={modalClasses.avatar}>
             <Link href={`/${currentUser.id}`}>
               <Image
                 src={currentUser.avatar || fakePhoto}
@@ -65,7 +76,7 @@ const PostTweetModal = ({
               placeholder="有什麼新鮮事？"
               className={classes.textarea}
             />
-            <Button className={classes.form__btn}>推文</Button>
+            <Button className={classes.form__btn}>{children ? "回覆" : "推文"}</Button>
           </form>
         </aside>
       </>
@@ -73,4 +84,5 @@ const PostTweetModal = ({
   )
 }
 
+export { type PostTweetModalProps }
 export default PostTweetModal

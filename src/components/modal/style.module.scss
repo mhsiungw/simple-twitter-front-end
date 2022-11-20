@@ -1,92 +1,10 @@
-.modal {
-  $parent: &;
-
-  padding: 0;
-  width: min(37.5rem, 100%);
-  min-height: 18.75rem;
-  border: none;
-  border-radius: 0.875rem;
-
-  &:modal {
-    position: relative;
-    bottom: auto;
-    top: 7.25vmin;
+.avatar {
+  width: 3.125rem;
+  & > * {
+    cursor: pointer;
   }
+}
 
-  &::backdrop {
-    background-color: rgba(0, 0, 0, 0.4);
-  }
-
-  &__replying-tweet {
-    padding: 0.9375rem;
-    display: flex;
-    gap: 0.625rem;
-    font-size: var(--fz-300);
-
-    &-content {
-      & p:first-child {
-        margin-block-end: 0.3125rem;
-      }
-
-      & p:last-child {
-        margin-block-start: var(--space-4);
-        font-size: var(--fz-200);
-
-        & a {
-          color: var(--clr-primary);
-        }
-      }
-    }
-  }
-
-  // * 要處理字體大小的部分
-  &__reply {
-    padding: 0.9375rem;
-    display: flex;
-    gap: 0.625rem;
-    font-size: var(--fz-400);
-    height: 15.3125rem;
-  }
-
-  &__avatar {
-    flex: 0 0 50px;
-  }
-
-  &__form {
-    flex: 1;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    grid-template-rows: 1fr auto;
-    gap: 0.9375rem;
-    padding-block-start: 0.75rem;
-
-    & textarea {
-      grid-column: 1 / -1;
-      font-size: inherit;
-      border: none;
-      resize: none;
-    }
-
-    & button {
-      grid-column: 2 / 3;
-
-      // ! 會採取未來設計好的樣式，所以以下樣式會省略
-      width: clamp(3rem, calc(2.68rem + 1.61vw), 4.125rem);
-      font-size: clamp(0.9375rem, calc(0.88rem + 0.27vw), 1.125rem);
-      padding-block: 0.625rem;
-      background-color: var(--clr-primary);
-      color: var(--clr-white);
-    }
-  }
-
-  &__decoration {
-    height: calc(100% - 25px - 10px);
-    background-color: var(--clr-border);
-    width: 1px;
-    translate: 1.5rem;
-  }
-
-  &_border {
-    border-top: 1px solid var(--clr-border);
-  }
+.border_top {
+  border-top: 1px solid var(--clr-border);
 }
