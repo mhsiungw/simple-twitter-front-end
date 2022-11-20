@@ -23,7 +23,6 @@
 	"next-env.d.ts",
 	"**/*.ts",
 	"**/*.tsx",
-  "src/components", "src/custom.d.ts"
 ],
   "exclude": ["node_modules"]
 }
