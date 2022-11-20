@@ -1,0 +1,38 @@
+.formRow {
+  position: relative;
+  width: 540px;
+  height: 52px;
+  margin: 10px;
+  background-color: #f5f8fa;;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-bottom: 2px solid #657786;
+  border-radius: 0 0 4px 4px;
+  // .symbol {
+  //   position: absolute;
+  //   bottom: 3px;
+  //   left: 10px;
+  // }
+  label {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: #657786;
+    margin: 0 auto 0 10px;
+    padding: 0;
+  }
+  input {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: #000000;
+    border: none;
+    background-color: #f5f8fa !important;
+    margin-left: 10px;
+    box-shadow: inset 0 0 0 1000px #f5f8fa;
+    &:-webkit-autofill::first-line {
+      font-size: 0.9375rem;
+    font-weight: 500;
+    color: #000000;
+    }
+  }
+}
