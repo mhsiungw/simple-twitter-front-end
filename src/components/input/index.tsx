@@ -1,6 +1,6 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import classes from "./style.module.scss";
-import inputInfo from "src/pages/index"
+import { inputInfo } from "src/pages/index"
 
 interface InputProps {
 	title: inputInfo
