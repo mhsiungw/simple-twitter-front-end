@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { ICCloseModel, ICArrow } from "../icons"
 import classes from "./style.module.scss"
 
@@ -18,9 +19,10 @@ function HeaderLeftButton({
     return <></>
   } else {
     return (
-      <a className={classes.arrow} onClick={handleClick}>
+      // * 回上一頁路徑
+      <Link className={classes.arrow} href="/">
         <ICArrow />
-      </a>
+      </Link>
     )
   }
 }
