@@ -13,7 +13,7 @@ interface PostTweetModalProps extends ModalProps {
   postApi: () => void
   currentUser: {
     readonly avatar?: string
-    readonly id: string
+    readonly id: string | number
   }
 }
 
@@ -61,10 +61,12 @@ const PostTweetModal = ({
           }`}>
           <div className={modalClasses.avatar}>
             <Link href={`/${currentUser.id}`}>
-              <Image
-                src={currentUser.avatar || fakePhoto}
-                alt="current user's avatar"
-              />
+              <a>
+                <Image
+                  src={currentUser.avatar || fakePhoto}
+                  alt="current user's avatar"
+                />
+              </a>
             </Link>
           </div>
           <form
@@ -76,7 +78,9 @@ const PostTweetModal = ({
               placeholder="有什麼新鮮事？"
               className={classes.textarea}
             />
-            <Button className={classes.form__btn}>{children ? "回覆" : "推文"}</Button>
+            <Button className={classes.form__btn}>
+              {children ? "回覆" : "推文"}
+            </Button>
           </form>
         </aside>
       </>

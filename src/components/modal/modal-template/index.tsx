@@ -11,8 +11,8 @@ const ModalTemplate = ({ isVisible, children, onDialogClose }: ModalProps) => {
   const dialogRef = useRef<HTMLDialogElement>(null)
   useEffect(() => {
     const dialog = dialogRef.current
-    if (isVisible) {
-      dialog?.showModal()
+    if (isVisible && dialog) {
+      dialog.showModal()
     } else {
       dialog?.close()
     }

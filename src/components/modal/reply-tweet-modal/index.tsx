@@ -3,14 +3,13 @@ import Image from "next/image"
 import fakePhoto from "../../../assets/img/fake-photo.png"
 import classes from "./style.module.scss"
 import PostTweetModal, { PostTweetModalProps } from "../post-tweet-modal"
-import { ModalProps } from "../modal-template"
 import Link from "next/link"
 import modalClasses from "../style.module.scss"
 
 interface ReplyTweetModalProps extends PostTweetModalProps {
   replyTweetInfo: {
-    tweetId: string
-    content: string
+    tweetId: string | number
+    content: string | number
     owner: {
       id: string
       name: string
