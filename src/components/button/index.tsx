@@ -1,22 +1,22 @@
-import { ReactNode } from 'react';
-import cx from 'classnames';
-import classes from './style.module.scss';
+import React, { ReactNode } from "react";
+import cx from "classnames";
+import classes from "./style.module.scss";
 
 interface ButtonProps {
-	className?: string,
-	children?: ReactNode;
-	size?: string;
-	disabled?: boolean;
-	loading?: boolean;
-	loadingText?: string;
-	onClick?: () => void;
+  className?: string,
+  children?: ReactNode,
+  size?: string,
+  disabled?: boolean,
+  loading?: boolean,
+  loadingText?: string,
+  onClick?: () => void,
 }
 
 interface SizeEnumsType {
-	SMALL: string;
-	MIDDLE: string;
-	LARGE: string;
-};
+  SMALL: string,
+  MIDDLE: string,
+  LARGE: string,
+}
 
 const SizeEnums: SizeEnumsType = {
 	SMALL: classes.sm,
@@ -27,8 +27,8 @@ const SizeEnums: SizeEnumsType = {
 const defaultProps: ButtonProps = {
 	disabled: false,
 	loading: false,
-	loadingText: '處理中',
-	size: 'small',
+	loadingText: "處理中",
+	size: "small",
 };
 
 const Button = ({
@@ -45,9 +45,10 @@ const Button = ({
 		<div className={className}>
 			<button
 				className={cx(
-					'button',
-					SizeEnums[size?.toUpperCase() as keyof SizeEnumsType] || SizeEnums['SMALL'],
-					classes.button,
+					"button",
+					SizeEnums[size?.toUpperCase() as keyof SizeEnumsType] ||
+            SizeEnums["SMALL"],
+					classes.button
 				)}
 				onClick={onClick}
 				disabled={disabled}
