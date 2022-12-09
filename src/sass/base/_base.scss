@@ -30,6 +30,7 @@ a {
 
 input, textarea, button, select {
 	font-size: var(--fz-900);
+  background-color: var(--clr-input-block);
 }
 
 @media (prefers-color-scheme: dark) {
