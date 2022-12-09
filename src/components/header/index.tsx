@@ -11,14 +11,14 @@ function Header({
   headerLeftButton?: JSX.Element | null
   headerTitle?: JSX.Element | null
   headerRightButton?: JSX.Element | null
-  utility: "modal" | "normal" | "with-icon"
+  utility: "modal" | "normal" | "with-arrow"
   handleLeftClick?: () => void
   title?: string | [string, number] | undefined
 }): JSX.Element {
   let headerTitle
   let headerLeftButton
-  
-  if (utility === "with-icon") {
+
+  if (utility === "with-arrow") {
     headerLeftButton = (
       // * 回上一頁路徑
       <Link href="/">

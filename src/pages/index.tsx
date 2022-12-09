@@ -7,7 +7,7 @@ const Home: NextPage = () => {
     <>
       <div>Home</div>
       <Example message="example string" />
-      {/* <Header utility="with-icon" title={["John Doe", 25]} /> */}
+      {/* <Header utility="with-arrow" title={["John Doe", 25]} /> */}
       <Header utility="normal" title="首頁" />
     </>
   )
