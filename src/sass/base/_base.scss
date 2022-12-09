@@ -1,0 +1,43 @@
+@use '../abstract' as *;
+
+:root {
+  @each $key, $value in $colors {
+    --clr-#{$key}: #{$value};
+  }
+  --clr-border: var(--clr-neutral-400);
+  --clr-content: var(--clr-neutral-900);
+  --clr-input-block: var(--clr-secondary);
+
+  @each $key, $value in $font-sizes {
+    --fz-#{$key}: #{$value};
+  }
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  color: var(--clr-content);
+  font-size: var(--fz-400);
+}
+
+a {
+  color: var(--clr-third);
+  font-size: inherit;
+}
+
+input, textarea, button, select {
+	font-size: var(--fz-900);
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    color: white;
+    background: black;
+  }
+}
