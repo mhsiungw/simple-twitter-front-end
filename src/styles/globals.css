@@ -1,23 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap");
 
-:root {
-  --clr-white: #fff;
-  --clr-border: #e6ecf0;
-  --clr-gray: #657786;
-  --clr-primary: #ff6600;
-
-  --fw-400: 400;
-  --fw-500: 500;
-  --fw-700: 700;
-  --fw-900: 900;
-
-  --fz-200: 0.8125rem;
-  --fz-300: 0.9375rem;
-  --fz-400: 1.125rem;
-
-  --space-4: 1.125rem;
-}
-
 html,
 body {
   padding: 0;
