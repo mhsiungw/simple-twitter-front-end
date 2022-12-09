@@ -3,7 +3,17 @@
   min-height: 3.4375rem;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid var(--clr-border);
+  border-bottom: 1px solid #e6ecf0;
   font-size: 1.125rem;
-  font-weight: var(--fw-700);
+  font-weight: 700;
+}
+
+.arrow {
+  margin-inline-end: 2.75rem;
+}
+
+.number {
+  font-size: 0.8125rem;
+  color: #657786;
+  font-weight: 500;
 }
