@@ -21,3 +21,10 @@ p {
 * {
   box-sizing: border-box;
 }
+
+/* 這可以加入到base.scss之中 */
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}

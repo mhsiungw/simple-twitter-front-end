@@ -1,8 +1,8 @@
-import { useEffect, useRef } from "react"
-import classes from "./style.module.scss"
+import { useEffect, useRef, ReactNode } from "react"
+import classes from "../style.module.scss"
 
 interface ModalProps {
-  children?: JSX.Element
+  children?: ReactNode
   isVisible: boolean
   onDialogClose: () => void
 }
@@ -24,4 +24,5 @@ const ModalTemplate = ({ isVisible, children, onDialogClose }: ModalProps) => {
   )
 }
 
-export { ModalTemplate, type ModalProps }
+export { type ModalProps }
+export default ModalTemplate
