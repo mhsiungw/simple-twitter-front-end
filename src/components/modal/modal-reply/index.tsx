@@ -6,7 +6,7 @@ import { ModalPostProps } from "../modal-post"
 import Link from "next/link"
 import ModalTemplate from "../modal-template"
 import Header from "components/header"
-import { useRef } from "react"
+import { useRef, useState } from "react"
 import Button from "components/button"
 
 interface ModalReplyProps extends ModalPostProps {
@@ -27,29 +27,29 @@ const ModalReply = ({
   isVisible,
   onDialogClose,
   currentUser,
-  postApi,
   replyTweetInfo
 }: ModalReplyProps) => {
   const textareaRef = useRef<HTMLTextAreaElement>(null)
+  const [shouldSubmit, setShouldSubmit] = useState(false)
   const {
     tweetId,
     owner: { id, name, account, avatar },
     content,
     createdAt
   } = replyTweetInfo
+
   const handleDialogClose = () => {
     const textarea = textareaRef.current
     const textContent = textarea?.value
+    onDialogClose()
+    if (shouldSubmit && textContent) {
+      // TODO post new tweet
+      // ! need post API
+      console.log(textarea.value)
+    }
+    setShouldSubmit(false)
+    console.log('In?')
     if (!textContent) return
-    textarea.value = ""
-  }
-  const handleFormSubmit = () => {
-    const textarea = textareaRef.current
-    const textContent = textarea?.value
-    if (!textContent) return
-    // TODO 傳送新的推文
-    console.log(textarea.value)
-    postApi()
     textarea.value = ""
   }
 
@@ -96,7 +96,7 @@ const ModalReply = ({
         </div>
         <form
           method="dialog"
-          onSubmit={handleFormSubmit}
+          onSubmit={() => setShouldSubmit(true)}
           className={classes.form}>
           <textarea
             ref={textareaRef}

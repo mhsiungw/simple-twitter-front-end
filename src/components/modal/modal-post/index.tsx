@@ -4,11 +4,10 @@ import Image from "next/image"
 import Link from "next/link"
 import fakePhoto from "../../../assets/img/fake-photo.png"
 import classes from "../style.module.scss"
-import { useRef } from "react"
+import { useRef, useState } from "react"
 import Button from "../../button"
 
 interface ModalPostProps extends ModalProps {
-  postApi: () => void
   currentUser: {
     readonly avatar?: string
     readonly id: string | number
@@ -16,29 +15,27 @@ interface ModalPostProps extends ModalProps {
 }
 
 const ModalPost = ({
-  // ! isVisible 應該可以改成由外層傳入ref去變動
-  // ! 所以由外層元件決定就好，根本不需要傳入
   isVisible,
   onDialogClose,
-  currentUser,
-  postApi
+  currentUser
 }: ModalPostProps) => {
   const textareaRef = useRef<HTMLTextAreaElement>(null)
-  const handleFormSubmit = () => {
-    const textarea = textareaRef.current
-    const textContent = textarea?.value
-    if (!textContent) return
-    // TODO 傳送新的推文
-    console.log(textarea.value)
-    postApi()
-    textarea.value = ""
-  }
+  const [shouldSubmit, setShouldSubmit] = useState(false)
+
   const handleDialogClose = () => {
     const textarea = textareaRef.current
     const textContent = textarea?.value
+    onDialogClose()
+    if (shouldSubmit && textContent) {
+      // TODO post new tweet
+      // ! need post API
+      console.log(textarea.value)
+    }
+    setShouldSubmit(false)
     if (!textContent) return
     textarea.value = ""
   }
+  
   return (
     <ModalTemplate isVisible={isVisible} onDialogClose={handleDialogClose}>
       <Header handleLeftClick={onDialogClose} utility="modal" />
@@ -55,7 +52,7 @@ const ModalPost = ({
         </div>
         <form
           method="dialog"
-          onSubmit={handleFormSubmit}
+          onSubmit={() => setShouldSubmit(true)}
           className={classes.form}>
           <textarea
             ref={textareaRef}
