@@ -9,7 +9,7 @@ import Header from "components/header"
 import { useRef } from "react"
 import Button from "components/button"
 
-interface ReplyTweetModalProps extends ModalPostProps {
+interface ModalReplyProps extends ModalPostProps {
   replyTweetInfo: {
     readonly tweetId: string | number
     readonly content: string | number
@@ -23,13 +23,13 @@ interface ReplyTweetModalProps extends ModalPostProps {
   }
 }
 
-const ReplyTweetModal = ({
+const ModalReply = ({
   isVisible,
   onDialogClose,
   currentUser,
   postApi,
   replyTweetInfo
-}: ReplyTweetModalProps) => {
+}: ModalReplyProps) => {
   const textareaRef = useRef<HTMLTextAreaElement>(null)
   const {
     tweetId,
@@ -112,4 +112,4 @@ const ReplyTweetModal = ({
   )
 }
 
-export default ReplyTweetModal
+export default ModalReply

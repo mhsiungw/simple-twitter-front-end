@@ -15,7 +15,7 @@ interface ModalPostProps extends ModalProps {
   }
 }
 
-const PostTweetModal = ({
+const ModalPost = ({
   // ! isVisible 應該可以改成由外層傳入ref去變動
   // ! 所以由外層元件決定就好，根本不需要傳入
   isVisible,
@@ -72,4 +72,4 @@ const PostTweetModal = ({
 }
 
 export { type ModalPostProps }
-export default PostTweetModal
+export default ModalPost
