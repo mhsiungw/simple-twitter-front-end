@@ -10,16 +10,16 @@ import { useRef, useState } from "react"
 import Button from "components/button"
 
 interface ModalReplyProps extends ModalPostProps {
-  replyTweetInfo: {
-    readonly tweetId: string | number
-    readonly content: string | number
-    owner: {
-      readonly id: string | number
+  tweet: {
+    readonly id: string
+    readonly description: string
+    user: {
+      readonly id: string
       readonly name: string
       readonly account: string
-      readonly avatar?: string
+      readonly avatarImg?: string
     }
-    readonly createdAt: number
+    readonly createdAt: Date
   }
 }
 
@@ -27,16 +27,16 @@ const ModalReply = ({
   isVisible,
   onDialogClose,
   currentUser,
-  replyTweetInfo
+  tweet
 }: ModalReplyProps) => {
   const textareaRef = useRef<HTMLTextAreaElement>(null)
   const [shouldSubmit, setShouldSubmit] = useState(false)
   const {
-    tweetId,
-    owner: { id, name, account, avatar },
-    content,
+    id,
+    user: { id: userId, name, account, avatarImg },
+    description,
     createdAt
-  } = replyTweetInfo
+  } = tweet
 
   const handleDialogClose = () => {
     const textarea = textareaRef.current
@@ -48,7 +48,6 @@ const ModalReply = ({
       console.log(textarea.value)
     }
     setShouldSubmit(false)
-    console.log('In?')
     if (!textContent) return
     textarea.value = ""
   }
@@ -58,40 +57,38 @@ const ModalReply = ({
       <Header handleLeftClick={onDialogClose} utility="modal" />
       <aside className={classes.modal__reply}>
         <div className={classes.avatar}>
-          <Link href={`/${id}`}>
-            <>
-              <Image src={avatar || fakePhoto} alt="tweet owner's avatar" />
-            </>
+          <Link href={`/${userId}`}>
+            <a>
+              <Image src={avatarImg || fakePhoto} alt="tweet owner's avatar" />
+            </a>
           </Link>
           <div className={classes.decoration}></div>
         </div>
         <section className={classes.modal__content}>
           <p>
             <strong>
-              <Link href={`/${id}`}>{name}</Link>{" "}
+              <Link href={`/${userId}`}>{name}</Link>{" "}
             </strong>
             <span>
-              <Link href={`/${id}`}>{"@" + account}</Link>
+              <Link href={`/${userId}`}>{"@" + account}</Link>
             </span>
+            {/* TODO 使用moment.js轉換時間 */}
             <span>{`・${createdAt}`}</span>
           </p>
           <p>
-            <Link href={`tweet/${tweetId}`}>{content}</Link>
+            <Link href={`tweet/${id}`}>{description}</Link>
           </p>
           <p>
-            回覆給 <Link href={`/${id}`}>{"@" + account}</Link>
+            回覆給 <Link href={`/${userId}`}>{"@" + account}</Link>
           </p>
         </section>
       </aside>
       <aside className={classes.modal__post}>
         <div className={classes.avatar}>
-          <Link href={`/${currentUser.id}`}>
-            <>
-              <Image
-                src={currentUser.avatar || fakePhoto}
-                alt="current user's avatar"
-              />
-            </>
+          <Link href={`/${userId}`}>
+            <a>
+              <Image src={avatarImg || fakePhoto} alt="current user's avatar" />
+            </a>
           </Link>
         </div>
         <form

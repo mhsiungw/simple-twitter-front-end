@@ -9,8 +9,8 @@ import Button from "../../button"
 
 interface ModalPostProps extends ModalProps {
   currentUser: {
-    readonly avatar?: string
-    readonly id: string | number
+    readonly avatarImg?: string
+    readonly id: string
   }
 }
 
@@ -21,6 +21,7 @@ const ModalPost = ({
 }: ModalPostProps) => {
   const textareaRef = useRef<HTMLTextAreaElement>(null)
   const [shouldSubmit, setShouldSubmit] = useState(false)
+  const { id, avatarImg } = currentUser
 
   const handleDialogClose = () => {
     const textarea = textareaRef.current
@@ -35,19 +36,16 @@ const ModalPost = ({
     if (!textContent) return
     textarea.value = ""
   }
-  
+
   return (
     <ModalTemplate isVisible={isVisible} onDialogClose={handleDialogClose}>
       <Header handleLeftClick={onDialogClose} utility="modal" />
       <aside className={classes.modal__post}>
-        <div className={classes.avatar}>
-          <Link href={`/${currentUser.id}`}>
-            <>
-              <Image
-                src={currentUser.avatar || fakePhoto}
-                alt="current user's avatar"
-              />
-            </>
+        <div className={classes.avatarImg}>
+          <Link href={`/${id}`}>
+            <a>
+              <Image src={avatarImg || fakePhoto} alt="current user's avatar" />
+            </a>
           </Link>
         </div>
         <form
