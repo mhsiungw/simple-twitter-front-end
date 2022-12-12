@@ -1,16 +1,14 @@
-import type { NextPage } from "next"
-import Example from "components/example"
-import Header from "components/header"
+import React from "react";
+import type { NextPage } from "next";
+import Example from "components/example";
 
 const Home: NextPage = () => {
-  return (
-    <>
-      <div>Home</div>
-      <Example message="example string" />
-      {/* <Header utility="with-arrow" title={["John Doe", 25]} /> */}
-      <Header utility="normal" title="首頁" />
-    </>
-  )
-}
+	return (
+		<>
+			<div>Home</div>
+			<Example message="example string"/>
+		</>
+	);
+};
 
-export default Home
+export default Home;
