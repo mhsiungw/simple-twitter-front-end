@@ -1,18 +1,19 @@
+import React from "react";
 import { ReactNode } from "react";
 import classes from "./style.module.scss";
 
-import { TweetResponse } from 'src/pages/index';
-import { User } from 'src/pages/index';
-import Reply from '../reply/index'
+import { TweetResponse } from "src/pages/index";
+import { User } from "src/pages/index";
+import Reply from "../reply/index";
 
 
 
 interface TweetProps {
-	className?: string;
-	children?: ReactNode;
-	tweetInfo: TweetResponse;
-	user: User;
-	onClick?: () => void;
+	className?: string,
+	children?: ReactNodestring,
+	tweetInfo: TweetResponsestring,
+	user: Userstring,
+	onClick?: () => voidstring,
 }
 
 
@@ -21,7 +22,8 @@ const Tweet = ({ tweetInfo, user }: TweetProps) => {
 		<div className={classes.container}>
 			<div className={classes.tweetCard}>
 				<div className={classes.tweetCardInfo}>
-					<div className={classes.tweetCardInfoImg}><img src={user.avatarImg} />
+					<div className={classes.tweetCardInfoImg}>
+						<img src={user.avatarImg} />
 					</div>
 					<div className={classes.tweetCardInfoName}>
 						<div className={classes.name}>{user.name}</div>

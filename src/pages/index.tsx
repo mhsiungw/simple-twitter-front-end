@@ -1,30 +1,30 @@
 import React from "react";
 import type { NextPage } from "next";
 import Example from "components/example";
-import TweetComponent from "components/tweetInfo/index"
+import TweetComponent from "components/tweetInfo/index";
 
 
 interface Tweet {
-	id: string;
-	userId: string;
-	description: string;
+	id: string,
+	userId: string,
+	description: string,
 	createdAt: Date,
 	updatedAt: Date,
 }
 
 export interface User {
-	id: string;
-	account: string;
-	name: string;
-	email: string;
-	avatarImg: string;
+	id: string,
+	account: string,
+	name: string,
+	email: string,
+	avatarImg: string,
 }
 
 interface Reply {
-	id: string;
-	tweetId: string;
-	userId: string;
-	content: string;
+	id: string,
+	tweetId: string,
+	userId: string,
+	content: string,
 	createdAt: Date,
 	updatedAt: Date,
 }
@@ -35,18 +35,18 @@ export interface TweetResponse {
 	replyCount: number,
 	isLiked: boolean,
 	replies: [{
-		reply: Reply
-		user: User
-	}]
+		reply: Reply,
+		user: User,
+	}],
 }
 
 
 const Home: NextPage = () => {
 	const tweetInfo: TweetResponse = {
 		tweet: {
-			id: '123',
-			userId: '1234',
-			description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip',
+			id: "123",
+			userId: "1234",
+			description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip",
 			createdAt: new Date(),
 			updatedAt: new Date(),
 		},
@@ -63,9 +63,9 @@ const Home: NextPage = () => {
 				updatedAt: new Date()
 			},
 			user: {
-				id: '123',
-				account: 'onetwothree',
-				name: 'John',
+				id: "123",
+				account: "onetwothree",
+				name: "John",
 				email: "hi@hi.com",
 				avatarImg: "https://i.imgur.com/OckVkRo.jpeg",
 			}
@@ -73,9 +73,9 @@ const Home: NextPage = () => {
 	};
 
 	const user: User = {
-		id: '123',
-		account: 'testAcc',
-		name: 'Han',
+		id: "123",
+		account: "testAcc",
+		name: "Han",
 		email: "hi@hi.com",
 		avatarImg: "https://i.imgur.com/dDNedqE.jpeg",
 	};
