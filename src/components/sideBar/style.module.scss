@@ -18,6 +18,20 @@
     flex: 1;
     margin-top: 20px;
   }
+  .sideBarItem {
+    svg {
+      fill: #000;
+    }
+    &:hover,
+    &.active {
+      .sideBarName {
+        color: #ff6600;
+      }
+      svg {
+        fill: #ff6600;
+      }
+    }
+  }
   .sideBarItem,
   .logout {
     padding: 0 10px;
@@ -30,12 +44,6 @@
       font-size: 18px;
       font-weight: 700;
       color: #000;
-    }
-    &:hover,
-    &.active {
-      .sideBarName {
-        color: #ff6600;
-      }
     }
   }
 }

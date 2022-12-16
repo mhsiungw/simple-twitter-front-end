@@ -1,23 +1,23 @@
 import React from "react";
 import { useState } from "react";
-import Image from "next/image";
-import logo from "./icons/logo.svg";
+import Logo from "./icons/logo.svg";
 import member from "./icons/member.svg";
-import memberActive from "./icons/member-active.svg";
 import home from "./icons/home.svg";
-import homeActive from "./icons/home-active.svg";
 import setting from "./icons/setting.svg";
-import settingActive from "./icons/setting-active.svg";
-import logout from "./icons/logout.svg";
+import Logout from "./icons/logout.svg";
 
 import styles from "./style.module.scss";
-
+interface SidebarProps {
+  isAgent?: boolean, 
+}
+const defaultProps: SidebarProps = {
+	isAgent: false
+};
 const sideBarList = [
 	{
 		type: "home",
 		title: "首頁",
 		icon: home,
-		iconActive: homeActive,
 		path: "/home",
 		isAdmin: false,
 	},
@@ -25,7 +25,6 @@ const sideBarList = [
 		type: "member",
 		title: "個人資料",
 		icon: member,
-		iconActive: memberActive,
 		path: "/user/self",
 		isAdmin: false,
 	},
@@ -33,7 +32,6 @@ const sideBarList = [
 		type: "setting",
 		title: "設定",
 		icon: setting,
-		iconActive: settingActive,
 		path: "/setting",
 		isAdmin: false,
 	},
@@ -41,7 +39,6 @@ const sideBarList = [
 		type: "adminMain",
 		title: "推文清單",
 		icon: home,
-		iconActive: homeActive,
 		path: "/admin_main",
 		isAdmin: true,
 	},
@@ -49,20 +46,18 @@ const sideBarList = [
 		type: "adminUsers",
 		title: "使用者列表",
 		icon: member,
-		iconActive: memberActive,
 		path: "/admin_users",
 		isAdmin: true,
 	},
 ];
-const SideBar = () => {
-	//Todo: get isUserAdmin from localStorage
-	const isUserAdmin = false;
-	const [activeItem, setActiveItem] = useState<string>("home");
+const SideBar = ({isAgent}:SidebarProps) => {
+	const [activeIndex, setActiveIndex] = useState<number>(0);
 	const filterSideMenu = sideBarList.filter(
-		(item) => item.isAdmin === isUserAdmin
+		(item) => item.isAdmin == isAgent
 	);
-	const toggleSideMenu = (type: string) => {
-		setActiveItem(type);
+	const toggleSideMenu = (index: number) => {
+		setActiveIndex(index);
+		//Todo: link to page
 	};
 	const handleLogout = () => {
 		// Todo: logout
@@ -71,38 +66,30 @@ const SideBar = () => {
 	return (
 		<div className={styles.wrapper}>
 			<div className={styles.content}>
-				<Image className={styles.logo} src={logo.src} alt="logo" />
+				<Logo className={styles.logo} />
 				<ul className={styles.sideBarList}>
 					{filterSideMenu.map((item, idx) => (
 						<li
 							className={`${styles.sideBarItem} ${
-								activeItem === item.type ? styles.active : ""
+								activeIndex === idx ? styles.active : ""
 							}`}
 							key={idx}
-							onClick={() => toggleSideMenu(item.type)}
+							onClick={() => toggleSideMenu(idx)}
 						>
-							<Image
-								className={styles.sideBarLogo}
-								src={
-									activeItem === item.type ? item.iconActive.src : item.icon.src
-								}
-								alt="side-bar-item"
-							/>
+							<item.icon />
 							<span className={styles.sideBarName}>{item.title}</span>
 						</li>
 					))}
 				</ul>
 				<div className={styles.logout} onClick={() => handleLogout}>
-					<Image
-						className={styles.sideBarLogo}
-						src={logout.src}
-						alt="side-bar-item"
-					/>
+					<Logout className={styles.sideBarLogo} />
 					<span>登出</span>
 				</div>
 			</div>
 		</div>
 	);
 };
+
+SideBar.defaultProps = defaultProps;
 
 export default SideBar;
