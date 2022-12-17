@@ -13,7 +13,7 @@ export interface NotifyGeneratorProps {
 
 const notifications: ReactElement[] = [];
 let notificationCount = 0;
-let root: Root, dom: HTMLElement | null;
+let root: Root, dom: HTMLElement | null = null;
 
 const notificationGenerator = ({icon, text, duration, className}:NotifyGeneratorProps) => {
 	dom = document.getElementById("notification");
@@ -22,10 +22,6 @@ const notificationGenerator = ({icon, text, duration, className}:NotifyGenerator
 		dom = document.createElement("div");
 		dom.id = "notification";
 		document.body.insertBefore(dom, null);
-		root = createRoot(dom);
-	}
-
-	if (root === null && dom) {
 		root = createRoot(dom);
 	}
 
@@ -39,7 +35,7 @@ const notificationGenerator = ({icon, text, duration, className}:NotifyGenerator
 			order={notifications.length}
 		/>
 	);
-	console.log("root", root);
+
 	root.render(<NotificationContainer notifications={notifications} />);
 	notificationCount++;
 
