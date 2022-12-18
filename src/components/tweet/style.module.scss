@@ -1,61 +1,64 @@
+.tweet {
+  border-bottom: 1px solid #e6ecf0;
+  width: 100%;
+  padding: 15px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px;
+  &__img {
+    aspect-ratio: 1;
+    border-radius: 50%;
+  }
 
-.tweetCard {
-    border-bottom: 1px solid #e6ecf0;
-    width: 100%;
-    padding: 15px;
-    display: flex;
-    .tweetCardImg {
-			img{width: 50px;
-        height: 50px;
-        border-radius: 50%;}
-        
-    }
-}
-
-.tweetCardContent {
-    flex: 1;
-    margin: 0 10px;
+  &__content {
     display: flex;
     flex-direction: column;
-    .tweetCardContentInfo {
-        .name {
-            font-weight: 700;
-            color: #1c1c1c;
-        }
-        .account {
-            margin: 0 5px;
-            color: #657786;
-        }
-        .createdAt {
-            color: #657786;
-            &::before {
-                content: "•";
-                margin-right: 5px;
-            }
-        }
-    }
-   .tweetCardContentText {
-        margin: 5px 0;
+  }
+
+  &__info {
+    display: flex;
+    gap: 5px;
+    margin-block-end: 6px;
+    & span {
+      &:first-of-type {
+        font-weight: 700;
         color: #1c1c1c;
-    }
-    .tweetCardContentReply {
-        display: flex;
-        .contentReply {
-            display: flex;
-            align-items: center;
-            width: 80px;
-            cursor: pointer;
-            svg {
-                width: 15px;
-                height: 15px;
-                margin-right: 10px;
-            }
-           .contentReplyNumber {
-                color: #657786;
-            }
-            .active {
-                color: #E0245E;
-            }
+      }
+
+      &:nth-of-type(2) {
+        color: #657786;
+      }
+
+      &:last-of-type {
+        color: #657786;
+        &::before {
+          content: "•";
+          margin-inline-end: 5px;
         }
+      }
     }
+  }
+
+  &__text {
+    margin-block-end: 14px;
+    color: #1c1c1c;
+  }
+
+  &__footer {
+    display: flex;
+    gap: 52px;
+    font-size: 13px;
+    color: #657786;
+    align-items: center;
+
+    &_interaction {
+      display: flex;
+      gap: 12px;
+    }
+
+    &_icon {
+      width: 15px;
+      cursor: pointer;
+    }
+  }
 }
