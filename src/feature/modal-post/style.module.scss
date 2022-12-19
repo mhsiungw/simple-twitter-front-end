@@ -1,0 +1,39 @@
+.modal {
+  padding: 0.9375rem;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.625rem;
+  min-height: 15.3125rem;
+  font-size: 18px;
+}
+
+.avatar {
+  width: 3.125rem;
+  & > * {
+    cursor: pointer;
+  }
+}
+
+.form {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  gap: 0.625rem;
+  padding-block-start: 0.75rem;
+
+  &__btn {
+    margin-inline-start: auto;
+    & span {
+      color: white;
+      font-weight: 500;
+    }
+  }
+}
+
+.textarea {
+  border: none;
+  resize: none;
+  font-size: inherit;
+  &:focus-visible {
+    outline: none;
+  }
+}

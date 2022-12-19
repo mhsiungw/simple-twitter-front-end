@@ -1,12 +1,12 @@
 import React from "react";
 import Header from "components/header";
-import ModalTemplate, { ModalProps } from "../modal-template";
+import Modal, { ModalProps } from "components/modal";
 import Image from "next/image";
 import Link from "next/link";
-import fakePhoto from "../../../assets/img/fake-photo.png";
-import classes from "../style.module.scss";
+import fakePhoto from "../../assets/img/fake-photo.png";
+import classes from "./style.module.scss";
 import { useRef, useState } from "react";
-import Button from "../../button";
+import Button from "components/button";
 
 interface ModalPostProps extends ModalProps {
   currentUser: {
@@ -39,10 +39,10 @@ const ModalPost = ({
 	};
 
 	return (
-		<ModalTemplate isVisible={isVisible} onDialogClose={handleDialogClose}>
+		<Modal isVisible={isVisible} onDialogClose={handleDialogClose}>
 			<Header handleLeftClick={onDialogClose} utility="modal" />
-			<aside className={classes.modal__post}>
-				<div className={classes.avatarImg}>
+			<aside className={classes.modal}>
+				<div className={classes.avatar}>
 					<Link href={`/${id}`}>
 						<a>
 							<Image src={avatarImg || fakePhoto} alt="current user's avatar" />
@@ -63,7 +63,7 @@ const ModalPost = ({
 					</Button>
 				</form>
 			</aside>
-		</ModalTemplate>
+		</Modal>
 	);
 };
 

@@ -1,10 +1,10 @@
 import React from "react";
 import Image from "next/image";
-import fakePhoto from "../../../assets/img/fake-photo.png";
-import classes from "../style.module.scss";
+import fakePhoto from "../../assets/img/fake-photo.png";
+import classes from "./style.module.scss";
 import { ModalPostProps } from "../modal-post";
 import Link from "next/link";
-import ModalTemplate from "../modal-template";
+import Modal from "components/modal";
 import Header from "components/header";
 import { useRef, useState } from "react";
 import Button from "components/button";
@@ -37,10 +37,7 @@ const ModalReply = ({
 		description,
 		createdAt
 	} = tweet;
-	const {
-		id: currentUserId,
-		avatarImg: currentUserAvatar
-	} = currentUser;
+	const { id: currentUserId, avatarImg: currentUserAvatar } = currentUser;
 
 	const handleDialogClose = () => {
 		const textarea = textareaRef.current;
@@ -57,7 +54,7 @@ const ModalReply = ({
 	};
 
 	return (
-		<ModalTemplate isVisible={isVisible} onDialogClose={handleDialogClose}>
+		<Modal isVisible={isVisible} onDialogClose={handleDialogClose}>
 			<Header handleLeftClick={onDialogClose} utility="modal" />
 			<aside className={classes.modal__reply}>
 				<div className={classes.avatar}>
@@ -91,7 +88,10 @@ const ModalReply = ({
 				<div className={classes.avatar}>
 					<Link href={`/${currentUserId}`}>
 						<a>
-							<Image src={currentUserAvatar || fakePhoto} alt="current user's avatar" />
+							<Image
+								src={currentUserAvatar || fakePhoto}
+								alt="current user's avatar"
+							/>
 						</a>
 					</Link>
 				</div>
@@ -109,7 +109,7 @@ const ModalReply = ({
 					</Button>
 				</form>
 			</aside>
-		</ModalTemplate>
+		</Modal>
 	);
 };
 
