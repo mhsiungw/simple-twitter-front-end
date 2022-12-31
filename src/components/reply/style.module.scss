@@ -1,62 +1,62 @@
-
 .tweetReplyList {
-	flex: 1;
-	border-top: 1px solid #e6ecf0;
-	overflow: scroll;
-	&::-webkit-scrollbar {
-		width: 3px;
-		background-color: transparent;
-		&-thumb {
-			border-radius: 10px;
-			background-color: #e6ecf0;
-		}
-	}
-	.noReplies {
-		margin-top: 20px;
-	}
+  flex: 1;
+  border-top: 1px solid #e6ecf0;
+  overflow: scroll;
+  &::-webkit-scrollbar {
+    width: 3px;
+    background-color: transparent;
+    &-thumb {
+      border-radius: 10px;
+      background-color: #e6ecf0;
+    }
+  }
+  .noReplies {
+    margin-top: 20px;
+  }
 
-	.tweetReply {
-		padding: 15px;
-		display: flex;
-		flex-direction: row;
-		font-size: 15px;
-		border-bottom: 1px solid #e6ecf0;
-		.tweetReplyImg {
-			img {
-				width: 50px;
-				height: 50px;
-				border-radius: 50%;
-				object-fit: cover;
-			}
-		}
-		.tweetReplyContent {
-			flex: 1;
-			padding: 0 10px;
-			text-align: left;
-			line-height: 23px;
-			font-weight: 500;
-			.tweetReplyContentInfo{
-				font-size: 15px;
-				font-weight: 700;
-				color: #1c1c1c;
-				letter-spacing: 0.5px;
-				.info {
-					margin-left: 5px;
-					font-weight: 700;
-					color: #657786;
-					letter-spacing: 0.5px;
-				}
-			}
-			.tweetReplyContentAvatar {
-				color: #657786;
-				span {
-					color: #ff6600;
-					margin-left: 2px;
-				}
-			}
-			.tweetReplyContentComment {
-				color: #1c1c1c;
-			}
-		}
-	}
+  .tweetReply {
+    padding: 15px;
+    display: flex;
+    flex-direction: row;
+    font-size: 15px;
+    border-bottom: 1px solid #e6ecf0;
+    .tweetReplyImg {
+      img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+        border-color: red;
+      }
+    }
+    .tweetReplyContent {
+      flex: 1;
+      padding: 0 10px;
+      text-align: left;
+      line-height: 23px;
+      font-weight: 500;
+      .tweetReplyContentInfo {
+        font-size: 15px;
+        font-weight: 700;
+        color: #1c1c1c;
+        letter-spacing: 0.5px;
+        .info {
+          margin-left: 5px;
+          font-weight: 700;
+          color: #657786;
+          letter-spacing: 0.5px;
+        }
+      }
+      .tweetReplyContentAvatar {
+        color: #657786;
+        span {
+          color: #ff6600;
+          margin-left: 2px;
+        }
+      }
+      .tweetReplyContentComment {
+        color: #1c1c1c;
+      }
+    }
+  }
 }
