@@ -1,27 +1,21 @@
 import React from "react";
 import classes from "./style.module.scss";
 import Image from "next/image";
-import dayjs from "dayjs";
+import dayjs,{ Dayjs } from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+import defaultImg from "./img/avatar-defalut.png";
 
-interface Tweet {
-	id: string,
-	userId: string,
-	description: string,
-	createdAt: Date,
-	updatedAt: Date,
-}
 interface Reply {
 	id: string,
 	tweetId: string,
 	userId: string,
 	content: string,
-	createdAt: Date,
-	updatedAt: Date,
+	createdAt: Dayjs,
+	updatedAt: Dayjs,
 }
 interface ReplyProps {
 	className?: string,
-	tweetInfo: TweetResponse,
+	tweetReplyInfo: TweetResponse,
 	user: User,
 	onClick?: () => React.MouseEventHandler<HTMLButtonElement>,
 }
@@ -30,40 +24,37 @@ interface User {
 	account: string,
 	name: string,
 	email: string,
-	avatarImg: string,
+	avatarImg?: string,
 }
 interface TweetResponse {
-	tweet: Tweet,
-	likeCount: number,
-	replyCount: number,
-	isLiked: boolean,
-	replies: {
 		reply: Reply,
 		user: User,
-	}[],
 }
 
 
-const Tweet = ({ tweetInfo, user }: ReplyProps) => {
+const Tweet = (props: ReplyProps) => {
 	dayjs.extend(relativeTime);
+	const {tweetReplyInfo, user} = props;
+	const handleAvatarClick=()=>{
+		//TOD:
+		console.log("!!!handleAvatarClick");
+	};
 	return (
-		<div className={classes.container}>
-			<div className={classes.tweetReplyList}>
-				{!tweetInfo.replyCount && <div className="no-replies">此推文目前還沒有任何回覆(＞﹏＜)</div>}
-				{tweetInfo.replies?.map((reply, index: number) => (<div className={classes.tweetReply} key={index}>
-					<div className={classes.tweetReplyImg}>
-						<Image width={50} height={50} src={reply.user.avatarImg} alt="avatar" />
-					</div>
-					<div className={classes.tweetReplyContent}>
-						<div className={classes.tweetReplyContentInfo}>
-							<span className="name">{reply.user.name}</span>
-							<span className={classes.info}>@{reply.user.account} • {dayjs(reply.reply.createdAt).fromNow()}</span>
-						</div>
-						<div className={classes.tweetReplyContentAvatar}>回覆
-							<span>@{user.account}</span></div>
-						<div className={classes.tweetReplyContentComment}>{reply.reply.content}</div>
-					</div>
-				</div>))}
+		<div className={classes.tweetReply} >
+			<div className={classes.tweetReplyImg}>
+				{tweetReplyInfo.user.avatarImg?
+					<Image width={50} height={50} src={tweetReplyInfo.user.avatarImg} alt="avatar" onClick={handleAvatarClick} />
+					:
+					<Image width={50} height={50} src={defaultImg} alt="avatar" onClick={handleAvatarClick} />}
+			</div>
+			<div className={classes.tweetReplyContent}>
+				<div className={classes.tweetReplyContentInfo}>
+					<span className="name">{tweetReplyInfo.user.name}</span>
+					<span className={classes.info}>@{tweetReplyInfo.user.account} • {dayjs(tweetReplyInfo.reply.createdAt).fromNow()}</span>
+				</div>
+				<div className={classes.tweetReplyContentAvatar}>回覆
+					<span onClick={handleAvatarClick}>@{user.account}</span></div>
+				<div className={classes.tweetReplyContentComment}>{tweetReplyInfo.reply.content}</div>
 			</div>
 		</div>
 	);
