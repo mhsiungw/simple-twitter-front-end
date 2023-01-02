@@ -8,6 +8,11 @@ import Modal from "components/modal";
 import Header from "components/header";
 import { useRef, useState } from "react";
 import Button from "components/button";
+import dayjs from "dayjs";
+import "dayjs/locale/zh-cn";
+import relativeTime from "dayjs/plugin/relativeTime";
+dayjs().format();
+dayjs.extend(relativeTime);
 
 interface ModalReplyProps extends ModalPostProps {
   tweet: {
@@ -19,7 +24,7 @@ interface ModalReplyProps extends ModalPostProps {
       readonly account: string,
       readonly avatarImg?: string,
     },
-    readonly createdAt: Date,
+    readonly createdAt: string,
   },
 }
 
@@ -34,10 +39,11 @@ const ModalReply = ({
 	const {
 		id,
 		user: { id: userId, name, account, avatarImg },
-		description,
-		createdAt
+		description
 	} = tweet;
 	const { id: currentUserId, avatarImg: currentUserAvatar } = currentUser;
+
+	const createdAt = dayjs().to(dayjs(tweet.createdAt));
 
 	const handleDialogClose = () => {
 		const textarea = textareaRef.current;
@@ -73,7 +79,6 @@ const ModalReply = ({
 						<span>
 							<Link href={`/${userId}`}>{"@" + account}</Link>
 						</span>
-						{/* TODO 使用moment.js轉換時間 */}
 						<span>{`・${createdAt}`}</span>
 					</p>
 					<p>
