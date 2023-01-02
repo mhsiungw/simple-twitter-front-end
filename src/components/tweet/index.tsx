@@ -21,7 +21,7 @@ interface Tweet<User> {
   id: string,
   user: User,
   description: string,
-  createdAt: Date,
+  createdAt: string,
 }
 
 interface TweetInfo {
