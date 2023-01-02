@@ -32,7 +32,7 @@ interface TweetInfo {
   },
 }
 
-export interface TweetProps {
+interface TweetProps {
   className?: string | undefined,
   tweetInfo: TweetInfo,
   openModalReply: () => void,
