@@ -43,7 +43,7 @@ const ModalReply = ({
 	} = tweet;
 	const { id: currentUserId, avatarImg: currentUserAvatar } = currentUser;
 
-	const createdAt = dayjs().to(dayjs(tweet.createdAt));
+	const createdAt = dayjs(tweet.createdAt).fromNow();
 
 	const handleDialogClose = () => {
 		const textarea = textareaRef.current;
