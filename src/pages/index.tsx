@@ -50,10 +50,7 @@ const Home: NextPage = () => {
 		<>
 			<div>Home</div>
 			<Example message="example string" />
-			{tweetInfo.map((item,index)=>(
-				<ReplyContent tweetReplyInfo={item} user={tweetUser} key={index} />
-			))}
-		</>	
+		</>
 	);
 };
 
