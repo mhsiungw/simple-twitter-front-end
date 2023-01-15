@@ -32,7 +32,7 @@ interface TweetResponse {
 }
 
 
-const Tweet = (props: ReplyProps) => {
+const ReplyContent = (props: ReplyProps) => {
 	dayjs.extend(relativeTime);
 	const {tweetReplyInfo, user} = props;
 	const handleAvatarClick=()=>{
@@ -60,7 +60,7 @@ const Tweet = (props: ReplyProps) => {
 	);
 };
 
-export default Tweet;
+export default ReplyContent;
 
 
 
