@@ -49,7 +49,7 @@ const Tweet = (props: ReplyProps) => {
 			</div>
 			<div className={classes.tweetReplyContent}>
 				<div className={classes.tweetReplyContentInfo}>
-					<span className="name">{tweetReplyInfo.user.name}</span>
+					<span >{tweetReplyInfo.user.name}</span>
 					<span className={classes.info}>@{tweetReplyInfo.user.account} • {dayjs(tweetReplyInfo.reply.createdAt).fromNow()}</span>
 				</div>
 				<div className={classes.tweetReplyContentAvatar}>回覆
