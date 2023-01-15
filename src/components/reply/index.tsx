@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./style.module.scss";
 import Image from "next/image";
-import dayjs,{ Dayjs } from "dayjs";
+import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import defaultImg from "./img/avatar-defalut.png";
 
@@ -10,8 +10,8 @@ interface Reply {
 	tweetId: string,
 	userId: string,
 	content: string,
-	createdAt: Dayjs,
-	updatedAt: Dayjs,
+	createdAt: string,
+	updatedAt: string,
 }
 interface ReplyProps {
 	className?: string,
