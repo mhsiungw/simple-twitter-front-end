@@ -21,21 +21,23 @@ const FormItem = ({
 	children,
 }: FormItemProps) => {
 	const [inputValue, setInputValue] = useState("");
-	const form = useFormContext().current;
+	const formRef = useFormContext();
 
 	const _handleFormChange = (e : SyntheticEvent) => {
 		const targetValue = (e.target as HTMLInputElement).value;
 
-		if (form && rule) {
+		const { current } = formRef;
+
+		if (current && rule) {
 			const {
 				validator,
 				errorMessage = `${name} is not a valid input.`,
 			} = rule;
 
 			if (!validator(targetValue)) {
-				form.errors[name] = errorMessage;
+				current.errors[name] = errorMessage;
 			} else {
-				form.errors[name] = "";
+				current.errors[name] = "";
 			}
 		}
 		
@@ -57,8 +59,10 @@ const FormItem = ({
 	};
 
 	const _getErrorStatus = () => {
-		if (form && form.errors) {
-			if (form.errors[name] === "") {
+		const { current } = formRef;
+
+		if (current && current.errors) {
+			if (current.errors[name] === "") {
 				return PASS;
 			}
 
@@ -79,7 +83,7 @@ const FormItem = ({
 			{
 				_getErrorStatus() || (
 					<div className={style["error-message"]}>
-						{form.errors[name]}
+						{formRef.current.errors[name]}
 					</div>
 				)
 			}
