@@ -1,11 +1,10 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import Header from "components/header";
 import Modal, { ModalProps } from "components/modal";
 import Image from "next/image";
 import Link from "next/link";
 import fakePhoto from "../../assets/img/fake-photo.png";
 import classes from "./style.module.scss";
-import { useRef, useState } from "react";
 import Button from "components/button";
 
 interface ModalPostProps extends ModalProps {
@@ -45,7 +44,7 @@ const ModalPost = ({
 				<div className={classes.avatar}>
 					<Link href={`/${id}`}>
 						<a>
-							<Image src={avatarImg || fakePhoto} alt="current user's avatar" />
+							<Image width={50} height={50} src={avatarImg || fakePhoto} alt="current user's avatar" />
 						</a>
 					</Link>
 				</div>

@@ -1,12 +1,11 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import fakePhoto from "../../assets/img/fake-photo.png";
 import classes from "./style.module.scss";
 import { ModalPostProps } from "../modal-post";
-import Link from "next/link";
 import Modal from "components/modal";
 import Header from "components/header";
-import { useRef, useState } from "react";
 import Button from "components/button";
 import dayjs from "dayjs";
 import "dayjs/locale/zh-cn";
@@ -66,7 +65,7 @@ const ModalReply = ({
 				<div className={classes.avatar}>
 					<Link href={`/${userId}`}>
 						<a>
-							<Image src={avatarImg || fakePhoto} alt="tweet owner's avatar" />
+							<Image width={50} height={50} src={avatarImg || fakePhoto} alt="tweet owner's avatar" />
 						</a>
 					</Link>
 					<div className={classes.decoration}></div>
