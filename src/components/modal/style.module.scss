@@ -1,0 +1,13 @@
+.modal {
+  padding: 0;
+  width: min(37.5rem, 100%);
+  min-height: 18.75rem;
+  border: none;
+  border-radius: 0.875rem;
+  bottom: auto;
+  top: 7.25vmin;
+
+  &::backdrop {
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+}
