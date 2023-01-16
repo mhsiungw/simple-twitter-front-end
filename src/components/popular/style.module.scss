@@ -1,0 +1,17 @@
+@import "../../styles/mixins.scss";
+.wrapper {
+  position: relative;
+  width: 350px;
+  border-radius: 14px;
+  overflow: hidden;
+  background-color: #f5f8fa;
+  color: #1c1c1c;
+
+  .title {
+    padding-left: 15px;
+    padding-top: 12px;
+    height: 45px;
+    border-bottom: 1px solid #e6ecf0;
+    font-weight: 700;
+  }
+}
