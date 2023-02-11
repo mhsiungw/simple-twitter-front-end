@@ -1,0 +1,28 @@
+@use './variables' as *;
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap");
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Noto Sans TC", -apple-system, BlinkMacSystemFont, Segoe UI,
+    Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+    sans-serif;
+  color: $color-black;
+  font-size: $fz-400;
+}
+
+a {
+  font-size: inherit;
+}
+
+input, textarea, button, select {
+	font-size: $fz-900;
+  background-color: $color-secondary;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
