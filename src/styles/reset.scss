@@ -1,22 +1,30 @@
-*, *::before, *::after {
-	box-sizing: border-box;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-img, picture, svg, video {
-	display: block;
-	max-width: 100%;
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
 }
 
 body {
-	min-height: 100vh;
+  min-height: 100vh;
 }
 
 @supports (min-height: 100dvh) {
-	body {
-		min-height: 100dvh;
-	}
+  body {
+    min-height: 100dvh;
+  }
 }
 
-input, textarea, button, select {
-	font: inherit;
+input,
+textarea,
+button,
+select {
+  font: inherit;
 }
