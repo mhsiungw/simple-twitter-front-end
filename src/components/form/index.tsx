@@ -1,6 +1,5 @@
 import React, { useEffect, ReactElement, ForwardRefRenderFunction, SyntheticEvent } from "react";
 import { FormContext } from "./context";
-import style from "./style.module.scss";
 
 interface FormData {
 	[key: string]: FormDataEntryValue,
@@ -33,11 +32,17 @@ const Form: ForwardRefRenderFunction<CustomHTMLFormElement, FormProps> = (props,
 				form.errors = {};
 				if (Array.isArray(children)){
 					for(let i = 0; i < children.length; i++) {
-						const name = children[i].props.name;
+						const id = children[i].props.id;
 
-						if (name) {
-							form.errors[name as keyof Errors] = "";
+						if (id) {
+							form.errors[id as keyof Errors] = "";
 						}
+					}
+				} else {
+					const id = children.props.id;
+
+					if (id) {
+						form.errors[id as keyof Errors] = "";
 					}
 				}
 
@@ -69,7 +74,7 @@ const Form: ForwardRefRenderFunction<CustomHTMLFormElement, FormProps> = (props,
 
 	return (
 		<FormContext.Provider value={ref}>
-			<form ref={ref} className={style.form} onSubmit={_handleSubmit}>
+			<form ref={ref} onSubmit={_handleSubmit}>
 				{children}
 			</form>
 		</FormContext.Provider>

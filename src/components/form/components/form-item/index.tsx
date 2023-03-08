@@ -7,7 +7,9 @@ const PASS = true;
 const NOT_PASS = false;
 
 interface FormItemProps {
-	name: string,
+	id: string,
+	label: string,
+	className?: string,
 	rule?: {
 		validator: (targetValue: string) => boolean,
 		errorMessage: string,
@@ -16,7 +18,9 @@ interface FormItemProps {
 }
 
 const FormItem = ({
-	name,
+	label,
+	id,
+	className,
 	rule,
 	children,
 }: FormItemProps) => {
@@ -26,18 +30,16 @@ const FormItem = ({
 	const _handleFormChange = (e : SyntheticEvent) => {
 		const targetValue = (e.target as HTMLInputElement).value;
 
-		const { current } = formRef;
-
-		if (current && rule) {
+		if (formRef.current && rule) {
 			const {
 				validator,
-				errorMessage = `${name} is not a valid input.`,
+				errorMessage = `${id} is not a valid input.`,
 			} = rule;
 
 			if (!validator(targetValue)) {
-				current.errors[name] = errorMessage;
+				formRef.current.errors[id] = errorMessage;
 			} else {
-				current.errors[name] = "";
+				formRef.current.errors[id] = "";
 			}
 		}
 		
@@ -51,7 +53,7 @@ const FormItem = ({
 			...formControl,
 			props: {
 				...formControl.props,
-				id: name,
+				id,
 				value: inputValue,
 				onChange: _handleFormChange,
 			}
@@ -59,10 +61,8 @@ const FormItem = ({
 	};
 
 	const _getErrorStatus = () => {
-		const { current } = formRef;
-
-		if (current && current.errors) {
-			if (current.errors[name] === "") {
+		if (formRef.current && formRef.current.errors) {
+			if (formRef.current.errors[id] === "") {
 				return PASS;
 			}
 
@@ -74,16 +74,16 @@ const FormItem = ({
 
 
 	return (
-		<div className={style["form-item"]}>
+		<div className={cx(style["form-item"], className)}>
 			<div className={style["input-item"]}>
-				<label htmlFor={name}>{name}</label>
+				<label htmlFor={id}>{label}</label>
 				{_getFormControlComponent()}
 			</div>
 			<div className={cx(style["status-bar"], _getErrorStatus() || style["error"])}/>
 			{
 				_getErrorStatus() || (
 					<div className={style["error-message"]}>
-						{formRef.current.errors[name]}
+						{formRef.current.errors[id]}
 					</div>
 				)
 			}
