@@ -1,0 +1,28 @@
+.setting-page {
+	display : flex;
+
+	.right-section {
+		border-left: 1px solid #E6ECF0;
+		flex: 1;
+
+		.title {
+			border-bottom: 1px solid #E6ECF0;
+			padding: 14px 0px 13px 20px;
+			color: #1C1C1C;
+			font-size: 19px;
+			font-weight: 700;
+		}
+
+		.form-wrapper {
+			padding: 20px 0 0 20px;
+			width: 42.5%;
+
+			.button-wrapper {
+				text-align: right;
+				button {
+					color: #fff;
+				}
+			}
+		}
+	}
+}
