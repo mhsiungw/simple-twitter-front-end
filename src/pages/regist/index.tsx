@@ -10,6 +10,7 @@ import Form, { CustomHTMLFormElement } from "components/form/index";
 import FormItem from "components/form/components/form-item";
 import Input from "components/input";
 import Button from "components/button";
+import Notify from "components/notify";
 import style from "./style.module.scss";
 import Link from "next/link";
 
@@ -20,14 +21,34 @@ const Register = () => {
 	const handleSubmit = () => {
 		const formData: null | HTMLFormElement = formRef.current;
 		if (formData && formData.validateFields) {
-			const password = formData.children[3].children[0].children[1]?.value;
-			const confirmedPassword =
-        formData.children[4].children[0].children[1].value;
-			if (!checkPasswordValid(password, confirmedPassword)) return; // TODO: 使用notify通知
-			formData.validateFields((values: object, error: boolean | object) => {
-				console.log(values, error);
-				// TODO: if success, need to clean all input data and redirect to /main page.
-			});
+			const passwordInput = formData.children[3].children[0]
+				.children[1] as HTMLInputElement;
+			const confirmedPasswordInput = formData.children[4].children[0]
+				.children[1] as HTMLInputElement;
+			if (
+				!checkPasswordValid(passwordInput.value, confirmedPasswordInput.value)
+			) {
+				Notify.error("密碼不一致，請重新輸入");
+				return;
+			}
+			formData.validateFields(
+				(values: object, error: { [key: string]: string }) => {
+					if (error) {
+						for (const key in error) {
+							if (error[key]) {
+								Notify.error(error[key]);
+							}
+						}
+					} else {
+						Notify.success("註冊成功")
+						;[...formData].forEach((child) => {
+							if (child instanceof HTMLInputElement) {
+								child.value = "";
+							}
+						});
+					}
+				}
+			);
 		}
 	};
 	return (

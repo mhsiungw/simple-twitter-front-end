@@ -20,17 +20,20 @@
 
   &__formItem {
     margin-block-end: clamp(1.5625rem, 1.5625rem + 0.42vh, 1.857rem);
-    border-radius: 4px;
-    overflow: hidden;
+
+    &:not(> button) {
+      border-radius: 4px;
+      overflow: hidden;
+    }
   }
 
   &__cancel {
     text-align: center;
     color: #0099ff;
-    
+
     & a {
       text-decoration: underline;
-      
+
       &:hover {
         opacity: 0.75;
       }
