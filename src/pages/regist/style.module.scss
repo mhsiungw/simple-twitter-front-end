@@ -1,0 +1,39 @@
+.button_text {
+  color: white;
+}
+
+.regist {
+  width: min(100% - 2rem, 33.75rem);
+  margin-inline: auto;
+  margin-block-start: min(5vh, 4.0625rem);
+
+  &__title {
+    text-align: center;
+
+    & h1 {
+      margin-block: clamp(1rem, 1rem + 0.75vh, 1.5625rem)
+        clamp(1.5rem, 1.5rem + 1.34vh, 2.5rem);
+      font-size: 1.4375rem;
+      line-height: 1.4;
+    }
+  }
+
+  &__formItem {
+    margin-block-end: clamp(1.5625rem, 1.5625rem + 0.42vh, 1.857rem);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  &__cancel {
+    text-align: center;
+    color: #0099ff;
+    
+    & a {
+      text-decoration: underline;
+      
+      &:hover {
+        opacity: 0.75;
+      }
+    }
+  }
+}

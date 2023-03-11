@@ -56,6 +56,10 @@ const Form: ForwardRefRenderFunction<CustomHTMLFormElement, FormProps> = (props,
 
 					// validate fields
 					for (const key in form.errors) {
+						if (!form[key].value) {
+							const labelText = form[key].previousElementSibling.textContent;
+							form.errors[key] = `${labelText} 不可為空白`;
+						}
 						if (form.errors[key] !== "") {
 							callback(formData, form.errors);
 							return;
@@ -81,9 +85,6 @@ const Form: ForwardRefRenderFunction<CustomHTMLFormElement, FormProps> = (props,
 	);
 };
 
-
-export type {
-	CustomHTMLFormElement,
-};
+export type { CustomHTMLFormElement };
 
 export default React.forwardRef(Form);

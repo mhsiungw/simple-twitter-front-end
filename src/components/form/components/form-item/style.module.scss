@@ -29,6 +29,11 @@
 		font-size: 19px;
 		letter-spacing: 2px;
 	}
+	
+	// This won't work in FireFox browser.
+	&:has(input:hover, input:focus-visible) ~ .status-bar {
+		background-color: #50B5FF;
+	}
 }
 
 .status-bar {
