@@ -21,24 +21,21 @@ const Register = () => {
 	const handleSubmit = () => {
 		const formData: null | HTMLFormElement = formRef.current;
 		if (formData && formData.validateFields) {
-			const passwordInput = formData.children[3].children[0]
-				.children[1] as HTMLInputElement;
-			const confirmedPasswordInput = formData.children[4].children[0]
-				.children[1] as HTMLInputElement;
-			if (
-				!checkPasswordValid(passwordInput.value, confirmedPasswordInput.value)
-			) {
-				Notify.error("密碼不一致，請重新輸入");
-				return;
-			}
 			formData.validateFields(
-				(values: object, error: { [key: string]: string }) => {
+				(
+					values: { [key: string]: string },
+					error: { [key: string]: string }
+				) => {
 					if (error) {
 						for (const key in error) {
 							if (error[key]) {
 								Notify.error(error[key]);
 							}
 						}
+					} else if (
+						!checkPasswordValid(values.password, values.confirmedPassword)
+					) {
+						Notify.error("密碼不一致，請重新輸入");
 					} else {
 						Notify.success("註冊成功")
 						;[...formData].forEach((child) => {
