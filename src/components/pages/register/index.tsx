@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import Image from "next/image";
-import Aclogo from "../../assets/img/ac_logo.png";
+import Aclogo from "../../../assets/img/ac_logo.png";
 import {
 	checkAndReturnErrorMsg,
 	checkEmailFormat,
