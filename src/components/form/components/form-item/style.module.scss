@@ -1,5 +1,6 @@
 .form-item {
-	margin-bottom: 25px;
+  margin-bottom: 25px;
+  position: relative;
 }
 
 .input-item {
@@ -29,6 +30,11 @@
 		font-size: 19px;
 		letter-spacing: 2px;
 	}
+	
+	// This won't work in FireFox browser.
+	&:has(input:hover, input:focus-visible) ~ .status-bar {
+		background-color: #50B5FF;
+	}
 }
 
 .status-bar {
@@ -47,4 +53,7 @@
 	font-weight: 500;
 	font-size: 15px;
 	line-height: 15px;
+  position: absolute;
+  bottom: -1rem;
+  left: 0.75rem;
 }
