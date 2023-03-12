@@ -1,37 +1,45 @@
-import React, { useEffect, ReactElement, ForwardRefRenderFunction, SyntheticEvent } from "react";
+import React, {
+	useEffect,
+	ReactElement,
+	ForwardRefRenderFunction,
+	SyntheticEvent
+} from "react";
 import { FormContext } from "./context";
 
 interface FormData {
-	[key: string]: FormDataEntryValue,
+  [key: string]: FormDataEntryValue,
 }
 
 interface Errors {
-	[key: string]: string,
+  [key: string]: string,
 }
 
 interface FormProps {
-	children: ReactElement | ReactElement[],
+  children: ReactElement | ReactElement[],
 }
 
 interface CustomHTMLFormElement extends HTMLFormElement {
-	errors: Errors,
-	validateFields: (callback: (formData: FormData, errors: Errors | false) => void) => void,
+  errors: Errors,
+  validateFields: (
+    callback: (formData: FormData, errors: Errors | false) => void
+  ) => void,
 }
 
-const Form: ForwardRefRenderFunction<CustomHTMLFormElement, FormProps> = (props, ref) => {
-	const {
-		children,
-	} = props;
+const Form: ForwardRefRenderFunction<CustomHTMLFormElement, FormProps> = (
+	props,
+	ref
+) => {
+	const { children } = props;
 
 	useEffect(() => {
 		if (ref !== null && typeof ref !== "function") {
 			const form = ref.current;
 
 			// initialise
-			if (form){
+			if (form) {
 				form.errors = {};
-				if (Array.isArray(children)){
-					for(let i = 0; i < children.length; i++) {
+				if (Array.isArray(children)) {
+					for (let i = 0; i < children.length; i++) {
 						const id = children[i].props.id;
 
 						if (id) {
@@ -56,6 +64,10 @@ const Form: ForwardRefRenderFunction<CustomHTMLFormElement, FormProps> = (props,
 
 					// validate fields
 					for (const key in form.errors) {
+						if (!form[key].value) {
+							const labelText = form[key].previousElementSibling.textContent;
+							form.errors[key] = `${labelText} 不可為空白`;
+						}
 						if (form.errors[key] !== "") {
 							callback(formData, form.errors);
 							return;
@@ -81,9 +93,6 @@ const Form: ForwardRefRenderFunction<CustomHTMLFormElement, FormProps> = (props,
 	);
 };
 
-
-export type {
-	CustomHTMLFormElement,
-};
+export type { CustomHTMLFormElement };
 
 export default React.forwardRef(Form);
