@@ -26,6 +26,19 @@ const Register = () => {
 					values: { [key: string]: string },
 					error: { [key: string]: string }
 				) => {
+					const correspondList: { [key: string]: string } = {
+						account: "帳號",
+						name: "名稱",
+						email: "Email",
+						password: "密碼",
+						confirmedPassword: "確認用密碼"
+					};
+					for (const key in values) {
+						if (!values[key]) {
+							Notify.error(`${correspondList[key]} 不可為空白 `);
+							return;
+						}
+					}
 					if (error) {
 						for (const key in error) {
 							if (error[key]) {
