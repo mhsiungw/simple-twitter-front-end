@@ -1,11 +1,6 @@
 import React, { useRef } from "react";
 import Image from "next/image";
 import Aclogo from "../../../assets/img/ac_logo.png";
-import {
-	checkAndReturnErrorMsg,
-	checkEmailFormat,
-	checkPasswordValid
-} from "src/utilities";
 import Form, { CustomHTMLFormElement } from "components/form/index";
 import FormItem from "components/form/components/form-item";
 import Input from "components/input";
@@ -13,6 +8,25 @@ import Button from "components/button";
 import Notify from "components/notify";
 import style from "./style.module.scss";
 import Link from "next/link";
+
+export const checkWordLength = (wordLimit: number) => {
+	return {
+		validator: (word: string) => word.length <= wordLimit,
+		errorMessage: `字數不可超過 ${wordLimit} 字上限`
+	};
+};
+
+export const checkEmailFormat = (userInput: string) => {
+	const pattern = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+	return pattern.test(userInput);
+};
+
+export const checkPasswordIsValid: (
+  password: string,
+  confirmedPassword: string
+) => boolean = (password, confirmedPassword) => {
+	return password === confirmedPassword;
+};
 
 const Register = () => {
 	const formRef = useRef<CustomHTMLFormElement>(null);
@@ -46,7 +60,7 @@ const Register = () => {
 							}
 						}
 					} else if (
-						!checkPasswordValid(values.password, values.confirmedPassword)
+						!checkPasswordIsValid(values.password, values.confirmedPassword)
 					) {
 						Notify.error("密碼不一致，請重新輸入");
 					} else {
@@ -71,14 +85,14 @@ const Register = () => {
 				<FormItem
 					id="account"
 					label="帳號"
-					rule={checkAndReturnErrorMsg(20)}
+					rule={checkWordLength(20)}
 					className={style.regist__formItem}>
 					<Input id="account" />
 				</FormItem>
 				<FormItem
 					id="name"
 					label="名稱"
-					rule={checkAndReturnErrorMsg(50)}
+					rule={checkWordLength(50)}
 					className={style.regist__formItem}>
 					<Input id="name" />
 				</FormItem>
@@ -95,7 +109,7 @@ const Register = () => {
 				<FormItem
 					id="password"
 					label="密碼"
-					rule={checkAndReturnErrorMsg(20)}
+					rule={checkWordLength(20)}
 					className={style.regist__formItem}>
 					<Input id="password" type="password" />
 				</FormItem>
