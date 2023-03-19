@@ -28,8 +28,7 @@ const FormItem = ({
 		const targetValue = (e.target as HTMLInputElement).value;
 
 		if (formRef.current && rule) {
-			formRef.current.errors[id] = rule(targetValue);
-			console.log(formRef.current.errors);
+			formRef.current.errors[id] = rule(targetValue) ?? "";
 		}
 		
 		setInputValue(targetValue);
