@@ -1,5 +1,6 @@
 .form-item {
   margin-bottom: 25px;
+  position: relative;
 }
 
 .input-item {
@@ -22,13 +23,18 @@
     border: none;
     outline: none;
 
-    color: #1c1c1c;
-    font-family: "Noto Sans TC";
-    font-style: normal;
-    font-weight: 500;
-    font-size: 19px;
-    letter-spacing: 2px;
-  }
+		color: #1C1C1C;
+		font-family: 'Noto Sans TC';
+		font-style: normal;
+		font-weight: 500;
+		font-size: 19px;
+		letter-spacing: 2px;
+	}
+	
+	// This won't work in FireFox browser.
+	&:has(input:hover, input:focus-visible) ~ .status-bar {
+		background-color: #50B5FF;
+	}
 }
 
 .status-bar {
@@ -43,8 +49,11 @@
 .error-message {
   margin-top: 5px;
 
-  color: #fc5a5a;
-  font-weight: 500;
-  font-size: 15px;
-  line-height: 15px;
+	color: #FC5A5A;
+	font-weight: 500;
+	font-size: 15px;
+	line-height: 15px;
+  position: absolute;
+  bottom: -1rem;
+  left: 0.75rem;
 }
