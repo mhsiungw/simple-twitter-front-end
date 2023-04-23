@@ -39,7 +39,7 @@ const Login = () => {
 				const success = true;	
 				if (success) {
 					Notify.success("登入成功");
-					router.push("/");
+					router.push("/admin_main");
 				}else {
 					Notify.error("error");
 				}
@@ -53,7 +53,7 @@ const Login = () => {
 				<div className={styles.logo}>
 					<Image src={logo} alt="img" />
 				</div>
-				<div className={styles["login-title"]}>登入 Alphitter</div>
+				<div className={styles["login-title"]}>後台登入</div>
 				<div className={styles["form-wrapper"]}>
 					<Form ref={formRef}>
 						<FormItem
@@ -79,12 +79,8 @@ const Login = () => {
             登入
 					</Button>
 					<div className={styles.links}>
-						<Link href="/register">
-							<div className={`${styles.link} ${styles.register}`}>註冊 Alphitter</div>
-						</Link>
-						<span>·</span>
-						<Link href="/admin">
-							<div className={`${styles.link} ${styles.admin}`}>後台登入</div>
+						<Link href="/login">
+							<div className={`${styles.link} ${styles.admin}`}>前台登入</div>
 						</Link>
 					</div>
 				</div>
