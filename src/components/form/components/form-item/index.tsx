@@ -10,7 +10,7 @@ interface FormItemProps {
 	id: string,
 	label: string,
 	className?: string,
-	rule?: (targetValue: string) => string | "",
+	rule?: (targetValue: string) => string | null,
 	children: ReactElement,
 }
 
