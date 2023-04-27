@@ -6,7 +6,6 @@ import Aclogo from "../../../assets/img/ac_logo.png";
 import Form, { CustomHTMLFormElement } from "components/form/index";
 import FormItem from "components/form/components/form-item";
 import Input from "components/input";
-import Button from "components/button";
 import Notify from "components/notify";
 import style from "./style.module.scss";
 import { checkEmailFormat, checkInputLength } from "src/utilities/validate";
@@ -60,7 +59,7 @@ const Register = () => {
 						setTimeout(() => {
 							Notify.success("註冊成功");
 							setDisabled(false);
-							router.push("/");
+							router.push("/login");
 						}, 2500);
 					}
 				}
