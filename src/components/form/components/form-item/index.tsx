@@ -10,7 +10,10 @@ interface FormItemProps {
 	id: string,
 	label: string,
 	className?: string,
-	rule?: (targetValue: string) => string | null,
+	rule?: {
+		validator: (targetValue: string) => boolean,
+		errorMessage: string,
+	},
 	children: ReactElement,
 }
 
@@ -28,7 +31,16 @@ const FormItem = ({
 		const targetValue = (e.target as HTMLInputElement).value;
 
 		if (formRef.current && rule) {
-			formRef.current.errors[id] = rule(targetValue) ?? "";
+			const {
+				validator,
+				errorMessage = `${id} is not a valid input.`,
+			} = rule;
+
+			if (!validator(targetValue)) {
+				formRef.current.errors[id] = errorMessage;
+			} else {
+				formRef.current.errors[id] = "";
+			}
 		}
 		
 		setInputValue(targetValue);

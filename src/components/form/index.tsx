@@ -35,7 +35,7 @@ const Form: ForwardRefRenderFunction<CustomHTMLFormElement, FormProps> = (
 		if (ref !== null && typeof ref !== "function") {
 			const form = ref.current;
 
-			// initialize
+			// initialise
 			if (form) {
 				form.errors = {};
 				if (Array.isArray(children)) {
