@@ -1,3 +1,5 @@
+@use "../../../styles/variables.scss" as *;
+
 .button_text {
   color: white;
 }
@@ -20,10 +22,25 @@
 
   &__formItem {
     margin-block-end: clamp(1.5625rem, 1.5625rem + 0.42vh, 1.857rem);
+    border-radius: 4px;
+    overflow: hidden;
+  }
 
-    &:not(> button) {
-      border-radius: 4px;
-      overflow: hidden;
+  &__submit {
+    background-color: $color-primary;
+    width: 100%;
+    margin-block-end: clamp(1.5625rem, 1.5625rem + 0.42vh, 1.857rem);
+    padding: 0.625rem;
+    border-radius: 100vw;
+
+    &:hover {
+      background-color: rgba($color: $color-primary, $alpha: 0.69);
+    }
+
+    &:disabled {
+      background-color: #696969;
+      color: #faf0e6;
+      cursor: not-allowed;
     }
   }
 

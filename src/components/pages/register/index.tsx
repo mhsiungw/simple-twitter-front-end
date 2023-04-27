@@ -1,5 +1,7 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/router";
 import Aclogo from "../../../assets/img/ac_logo.png";
 import Form, { CustomHTMLFormElement } from "components/form/index";
 import FormItem from "components/form/components/form-item";
@@ -7,21 +9,9 @@ import Input from "components/input";
 import Button from "components/button";
 import Notify from "components/notify";
 import style from "./style.module.scss";
-import Link from "next/link";
+import { checkEmailFormat, checkInputLength } from "src/utilities/validate";
 
-export const checkWordLength = (wordLimit: number) => {
-	return {
-		validator: (word: string) => word.length <= wordLimit,
-		errorMessage: `字數不可超過 ${wordLimit} 字上限`
-	};
-};
-
-export const checkEmailFormat = (userInput: string) => {
-	const pattern = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
-	return pattern.test(userInput);
-};
-
-export const checkPasswordIsValid: (
+const checkPasswordIsValid: (
   password: string,
   confirmedPassword: string
 ) => boolean = (password, confirmedPassword) => {
@@ -30,9 +20,10 @@ export const checkPasswordIsValid: (
 
 const Register = () => {
 	const formRef = useRef<CustomHTMLFormElement>(null);
-	// const [disabled, setDisabled] = useState(true);
+	const [disabled, setDisabled] = useState(false);
+	const router = useRouter();
 
-	const handleSubmit = () => {
+	const _handleSubmit = () => {
 		const formData: null | HTMLFormElement = formRef.current;
 		if (formData && formData.validateFields) {
 			formData.validateFields(
@@ -48,7 +39,7 @@ const Register = () => {
 						confirmedPassword: "確認用密碼"
 					};
 					for (const key in values) {
-						if (!values[key]) {
+						if (values[key] === "") {
 							Notify.error(`${correspondList[key]} 不可為空白 `);
 							return;
 						}
@@ -64,17 +55,19 @@ const Register = () => {
 					) {
 						Notify.error("密碼不一致，請重新輸入");
 					} else {
-						Notify.success("註冊成功")
-						;[...formData].forEach((child) => {
-							if (child instanceof HTMLInputElement) {
-								child.value = "";
-							}
-						});
+						// API
+						setDisabled(true);
+						setTimeout(() => {
+							Notify.success("註冊成功");
+							setDisabled(false);
+							router.push("/");
+						}, 2500);
 					}
 				}
 			);
 		}
 	};
+
 	return (
 		<div className={style.regist}>
 			<div className={style.regist__title}>
@@ -85,31 +78,28 @@ const Register = () => {
 				<FormItem
 					id="account"
 					label="帳號"
-					rule={checkWordLength(20)}
+					rule={checkInputLength(20)}
 					className={style.regist__formItem}>
 					<Input id="account" />
 				</FormItem>
 				<FormItem
 					id="name"
 					label="名稱"
-					rule={checkWordLength(50)}
+					rule={checkInputLength(50)}
 					className={style.regist__formItem}>
 					<Input id="name" />
 				</FormItem>
 				<FormItem
 					id="email"
 					label="Email"
-					rule={{
-						validator: checkEmailFormat,
-						errorMessage: "錯誤的 Email 格式"
-					}}
+					rule={checkEmailFormat}
 					className={style.regist__formItem}>
 					<Input id="email" type="email" />
 				</FormItem>
 				<FormItem
 					id="password"
 					label="密碼"
-					rule={checkWordLength(20)}
+					rule={checkInputLength(20)}
 					className={style.regist__formItem}>
 					<Input id="password" type="password" />
 				</FormItem>
@@ -119,12 +109,12 @@ const Register = () => {
 					className={style.regist__formItem}>
 					<Input id="confirmedPassword" type="password" />
 				</FormItem>
-				<Button
-					size="large"
-					onClick={handleSubmit}
-					className={style.regist__formItem}>
+				<button
+					onClick={_handleSubmit}
+					disabled={disabled}
+					className={style.regist__submit}>
 					<span className={style.button_text}>註冊</span>
-				</Button>
+				</button>
 				<div className={style.regist__cancel}>
 					<Link href="/login">取消</Link>
 				</div>
