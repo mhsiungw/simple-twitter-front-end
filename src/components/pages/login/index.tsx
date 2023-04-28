@@ -12,11 +12,11 @@ import { CustomHTMLFormElement } from "components/form";
 import styles from "./style.module.scss";
 import logo from "../../../assets/img/logo.png";
 
-export const checkWordLength = (wordLimit: number) => {
-	return {
-		validator: (word: string) => word.length <= wordLimit,
-		errorMessage: `字數不可超過 ${wordLimit} 字上限`
-	};
+export const checkWordLength = (wordLimit: number) => (word: string) => {
+	if (word.length > wordLimit) {
+		return `字數不可超過 ${wordLimit} 字上限`;
+	}
+	return null;
 };
 
 const Login = () => {
