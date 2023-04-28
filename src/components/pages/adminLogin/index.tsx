@@ -35,16 +35,18 @@ const Login = () => {
 						return;
 					}
 				}
-				//接收登入api回傳結果
-				const success = true;	
-				if (success) {
+				if (error) {
+					for (const key in error) {
+						if (error[key]) {
+							Notify.error(error[key]);
+						}
+					}
+				} else {
+					//登入api
 					Notify.success("登入成功");
-					router.push("/admin_main");
-				}else {
-					Notify.error("error");
+					setTimeout(() => router.push("/"), 500);
 				}
 			});
-			
 		}
 	};
 	return (
@@ -68,7 +70,7 @@ const Login = () => {
 							label="密碼"
 							rule={checkWordLength(20)}
 						>
-							<Input/>
+							<Input type="password"/>
 						</FormItem>
 					</Form>
 					<Button
