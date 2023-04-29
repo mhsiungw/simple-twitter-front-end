@@ -1,4 +1,4 @@
-@use "../../../styles/variables.scss" as *;
+@use "src/styles/variables.scss" as *;
 
 .button_text {
   color: white;
@@ -23,7 +23,6 @@
   &__formItem {
     margin-block-end: clamp(1.5625rem, 1.5625rem + 0.42vh, 1.857rem);
     border-radius: 4px;
-    overflow: hidden;
   }
 
   &__submit {
@@ -32,6 +31,7 @@
     margin-block-end: clamp(1.5625rem, 1.5625rem + 0.42vh, 1.857rem);
     padding: 0.625rem;
     border-radius: 100vw;
+    font-size: $fz-500;
 
     &:hover {
       background-color: rgba($color: $color-primary, $alpha: 0.69);
@@ -46,13 +46,18 @@
 
   &__cancel {
     text-align: center;
-    color: #0099ff;
+    color: $color-third;
+    font-size: $fz-500;
 
     & a {
       text-decoration: underline;
 
       &:hover {
         opacity: 0.75;
+      }
+      
+      &:is(:active, :visited) {
+        color: currentColor
       }
     }
   }
