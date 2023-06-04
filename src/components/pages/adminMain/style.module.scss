@@ -1,0 +1,85 @@
+.admin-main-page {
+  height: 100vh;
+  display: flex;
+  .right-section {
+    border-left: 1px solid #e6ecf0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    .title {
+      height: 55px;
+      border-bottom: 1px solid #e6ecf0;
+      padding: 14px 0px 13px 20px;
+      color: #1c1c1c;
+      font-size: 19px;
+      font-weight: 700;
+    }
+    .tweet-list {
+      flex: 1;
+      overflow-y: scroll;
+    }
+    .tweet-list-item {
+      position: relative;
+      padding: 18px 0 12px 15px;
+      display: flex;
+      border-bottom: 1px solid #e6ecf0;
+      .tweet-img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: #c4c4c4;
+      }
+      .tweet-info {
+        margin-left: 15px;
+        font-size: 15px;
+        font-weight: 500;
+        .tweet-info-upper {
+          display: flex;
+          .username {
+            font-weight: 700;
+            color: #1c1c1c;
+          }
+          .account {
+            margin-left: 5px;
+            color: #657786;
+          }
+          .time {
+            color: #657786;
+          }
+        }
+        .tweet-info-lower {
+          margin-top: 6px;
+        }
+      }
+      .close-btn {
+        width: 15px;
+        height: 15px;
+        position: absolute;
+        top: 19.5px;
+        right: 19.5px;
+        cursor: pointer;
+        &:hover {
+          transform: rotate(90deg);
+          transition: all 0.3s;
+        }
+        &::before,
+        &::after {
+          content: "";
+          width: 140%;
+          height: 2px;
+          background-color: #657786;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          border-radius: 1px;
+        }
+        &::before {
+          transform: translate(-50%, -50%) rotate(45deg);
+        }
+        &::after {
+          transform: translate(-50%, -50%) rotate(-45deg);
+        }
+      }
+    }
+  }
+}
