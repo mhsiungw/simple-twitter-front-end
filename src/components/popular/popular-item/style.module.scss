@@ -1,4 +1,4 @@
-@use "../../../styles/mixins.scss";
+@import "../../../styles/mixins.scss";
 .popularItem {
   position: relative;
   padding: 10px 15px;
@@ -21,6 +21,12 @@
     flex-direction: column;
     font-size: 15px;
     font-weight: 700;
+    span {
+      width: 160px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
     .account {
       color: #657786;
     }
@@ -39,6 +45,7 @@
     }
   }
   .followingBtn button {
+    color: #fff;
     width: 90px;
   }
   .followBtn button {

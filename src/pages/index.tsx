@@ -1,14 +1,8 @@
 import React from "react";
-import type { NextPage } from "next";
-import Example from "components/example";
+import Main from "components/pages/main";
 
-const Home: NextPage = () => {
-	return (
-		<>
-			<div>Home</div>
-			<Example message="example string" />
-		</>
-	);
+const MainPage = () => {
+	return <Main />;
 };
 
-export default Home;
+export default MainPage;
