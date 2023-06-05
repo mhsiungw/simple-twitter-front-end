@@ -1,10 +1,7 @@
-import React, { useState, SyntheticEvent, ReactElement } from "react";
+import React, { useEffect, useState, SyntheticEvent, ReactElement } from "react";
 import cx from "classnames";
 import { useFormContext } from "components/form/context";
 import style from "./style.module.scss";
-
-const PASS = true;
-const NOT_PASS = false;
 
 interface FormItemProps {
 	id: string,
@@ -22,13 +19,26 @@ const FormItem = ({
 	children,
 }: FormItemProps) => {
 	const [inputValue, setInputValue] = useState("");
+	const [errorMessage, setErrorMessage] = useState<string | null>(null);
 	const formRef = useFormContext();
+
+	useEffect(() => {
+		if (formRef.current && rule) {
+			formRef.current.rules = {
+				...formRef.current.rules,
+				[id]: {
+					rule,
+					setErrorMessage,
+				},
+			};
+		}
+	}, [formRef, id, rule]);
 
 	const _handleFormChange = (e : SyntheticEvent) => {
 		const targetValue = (e.target as HTMLInputElement).value;
 
 		if (formRef.current && rule) {
-			formRef.current.errors[id] = rule(targetValue) ?? "";
+			formRef.current.errors[id] = rule(targetValue) ? setErrorMessage(rule(targetValue)) : setErrorMessage(null);
 		}
 		
 		setInputValue(targetValue);
@@ -48,30 +58,17 @@ const FormItem = ({
 		};
 	};
 
-	const _getErrorStatus = () => {
-		if (formRef.current && formRef.current.errors) {
-			if (formRef.current.errors[id] === "") {
-				return PASS;
-			}
-
-			return NOT_PASS;
-		}
-		
-		return PASS;
-	};
-
-
 	return (
 		<div className={cx(style["form-item"], className)}>
 			<div className={style["input-item"]}>
 				<label htmlFor={id}>{label}</label>
 				{_getFormControlComponent()}
 			</div>
-			<div className={cx(style["status-bar"], _getErrorStatus() || style["error"])}/>
+			<div className={cx(style["status-bar"], errorMessage && style["error"])}/>
 			{
-				_getErrorStatus() || (
+				errorMessage && (
 					<div className={style["error-message"]}>
-						{formRef.current.errors[id]}
+						{errorMessage}
 					</div>
 				)
 			}
