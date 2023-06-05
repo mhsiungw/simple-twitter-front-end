@@ -59,10 +59,12 @@ const Form: ForwardRefRenderFunction<CustomHTMLFormElement, FormProps> = (
 
 					// get form data
 					for (const [key, value] of new FormData(form)) {
-						const rules = form.rules;
+						const ruleHandlerByKey = form?.rules?.[key]?.rule;
+						const ruleStateSetterByKey = form?.rules?.[key]?.setErrorMessage;
+						const errorMessage = typeof ruleHandlerByKey === "function" ? ruleHandlerByKey(value) : null;
 
-						if (rules?.[key]?.rule && rules?.[key]?.setErrorMessage) {
-							rules[key].rule(value) && rules[key].setErrorMessage(rules[key].rule(value));
+						if (errorMessage && ruleStateSetterByKey) {
+							ruleStateSetterByKey(errorMessage);
 						}
 
 						formData[key] = value;

@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect, useState, SyntheticEvent, ReactElement } from "react";
+import React, { useEffect, useState, SyntheticEvent, ReactElement } from "react";
 import cx from "classnames";
 import { useFormContext } from "components/form/context";
 import style from "./style.module.scss";
