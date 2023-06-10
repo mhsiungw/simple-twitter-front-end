@@ -143,7 +143,6 @@ export const Main = () => {
 				onClick={() =>
 					Notify.error(
 						"Test",
-						100000
 					)
 				}>
         Test

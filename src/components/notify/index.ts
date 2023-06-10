@@ -10,7 +10,6 @@ const Notify = {
 			duration,
 			icon: ICSuccess,
 			className: "success",
-			id: crypto.randomUUID()
 		}),
 	error: (text: Text, duration = 3000) =>
 		notificationGenerator({
@@ -18,7 +17,6 @@ const Notify = {
 			duration,
 			icon: ICError,
 			className: "error",
-			id: crypto.randomUUID()
 		})
 };
 

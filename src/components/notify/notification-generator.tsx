@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, useState, useEffect } from "react";
 import { createRoot, Root } from "react-dom/client";
 import NotificationContainer from "./components/notification-container";
 import Notification from "./components/notification";
@@ -9,16 +9,13 @@ export interface NotifyGeneratorProps {
 	text: string | number,
 	duration: number,
 	className?: string,
-	id: string,
 }
 
 const notifications: ReactElement[] = [];
 let notificationCount = 0;
 let root: Root, dom: HTMLElement | null = null;
 
-// TODO 要怎麼去限制整個 notifications 的全部數量，去減少會溢滿出來的狀況？
-
-const notificationGenerator = ({icon, text, duration, className, id}:NotifyGeneratorProps) => {
+const notificationGenerator = ({icon, text, duration, className}:NotifyGeneratorProps) => {
 	dom = document.getElementById("notification");
 
 	if (dom === null) {
@@ -31,12 +28,11 @@ const notificationGenerator = ({icon, text, duration, className, id}:NotifyGener
 	notifications.push(
 		<Notification
 			icon={icon}
-			key={notificationCount}
+			key={crypto.randomUUID()}
 			text={text}
 			duration={duration}
 			className={className}
-			order={notifications.length}
-			id={id}
+			order={notificationCount}
 		/>
 	);
 
@@ -46,7 +42,7 @@ const notificationGenerator = ({icon, text, duration, className, id}:NotifyGener
 	setTimeout(() => {
 		notifications.shift();
 		root.render(<NotificationContainer notifications={notifications} />);
-		notificationCount = 0;
+		notificationCount--;
 	}, duration + 100);
 };
 

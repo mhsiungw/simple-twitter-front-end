@@ -15,7 +15,6 @@ const Notification = ({
 	icon: Icon,
 	className,
 	order,
-	id,
 }: AppProps) => {
 	const notificationRef = useRef<HTMLDivElement | null>(null);
 	const [isSlideOut, setIsSlideOut] = useState(false);
@@ -41,7 +40,6 @@ const Notification = ({
 			style={{
 				top: _getTop(order),
 			}}
-			id={id}
 			ref={notificationRef}
 		>
 			<p>{text}</p>
