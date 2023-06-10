@@ -139,6 +139,15 @@ export const Main = () => {
 
 	return (
 		<div className={styles["main-page-container"]}>
+			<button
+				onClick={() =>
+					Notify.error(
+						"Test",
+						100000
+					)
+				}>
+        Test
+			</button>
 			<div className={styles["side-bar-container"]}>
 				<SideBar />
 			</div>
@@ -159,15 +168,14 @@ export const Main = () => {
 						<Button className={styles["form_btn"]}>
 							<span>推文</span>
 						</Button>
-						{ showError && <div className={styles["error-container"]}>
-							{ errMsg }
-						</div>
-						}
+						{showError && (
+							<div className={styles["error-container"]}>{errMsg}</div>
+						)}
 					</form>
 				</div>
 				<div className={styles["index-tweet-list"]}>
-					{ homeTweetList.map((item, idx) => (
-						<Tweet tweetInfo={item} key={idx} handleLike={() => handleLike()}/>
+					{homeTweetList.map((item, idx) => (
+						<Tweet tweetInfo={item} key={idx} handleLike={() => handleLike()} />
 						// <div className={styles["index-tweet-list"]} key={idx}>123</div>
 					))}
 				</div>

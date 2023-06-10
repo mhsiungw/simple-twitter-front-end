@@ -9,13 +9,16 @@ export interface NotifyGeneratorProps {
 	text: string | number,
 	duration: number,
 	className?: string,
+	id: string,
 }
 
 const notifications: ReactElement[] = [];
 let notificationCount = 0;
 let root: Root, dom: HTMLElement | null = null;
 
-const notificationGenerator = ({icon, text, duration, className}:NotifyGeneratorProps) => {
+// TODO 要怎麼去限制整個 notifications 的全部數量，去減少會溢滿出來的狀況？
+
+const notificationGenerator = ({icon, text, duration, className, id}:NotifyGeneratorProps) => {
 	dom = document.getElementById("notification");
 
 	if (dom === null) {
@@ -33,6 +36,7 @@ const notificationGenerator = ({icon, text, duration, className}:NotifyGenerator
 			duration={duration}
 			className={className}
 			order={notifications.length}
+			id={id}
 		/>
 	);
 
