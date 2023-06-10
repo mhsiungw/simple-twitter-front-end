@@ -14,7 +14,7 @@ const checkPasswordIsValid: (
   password: string,
   confirmedPassword: string
 ) => boolean = (password, confirmedPassword) => {
-	return password === confirmedPassword;
+	return password !== confirmedPassword;
 };
 
 const Register = () => {
@@ -39,22 +39,22 @@ const Register = () => {
 					};
 					for (const key in values) {
 						if (values[key] === "") {
-							Notify.error(`${correspondList[key]} 不可為空白 `);
+							console.log(values[key]);
 							return;
 						}
 					}
-					if (error) {
-						for (const key in error) {
-							if (error[key]) {
-								Notify.error(error[key]);
-							}
+					for (const key in error) {
+						if (key === "confirmedPassword") continue;
+						if (error[key] !== null) {
+							console.log(error[key], key);
+							return;
 						}
-					} else if (
-						!checkPasswordIsValid(values.password, values.confirmedPassword)
-					) {
+					}
+					if (checkPasswordIsValid(values.password, values.confirmedPassword)) {
 						Notify.error("密碼不一致，請重新輸入");
 					} else {
 						// API
+						console.log("success");
 						setDisabled(true);
 						setTimeout(() => {
 							Notify.success("註冊成功");
