@@ -30,23 +30,14 @@ const Register = () => {
 					values: { [key: string]: string },
 					error: { [key: string]: string }
 				) => {
-					const correspondList: { [key: string]: string } = {
-						account: "帳號",
-						name: "名稱",
-						email: "Email",
-						password: "密碼",
-						confirmedPassword: "確認用密碼"
-					};
 					for (const key in values) {
 						if (values[key] === "") {
-							console.log(values[key]);
 							return;
 						}
 					}
 					for (const key in error) {
 						if (key === "confirmedPassword") continue;
 						if (error[key] !== null) {
-							console.log(error[key], key);
 							return;
 						}
 					}
