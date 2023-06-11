@@ -8,14 +8,11 @@ import FormItem from "components/form/components/form-item";
 import Input from "components/input";
 import Notify from "components/notify";
 import style from "./style.module.scss";
-import { checkEmailFormat, checkInputLength } from "src/utilities/validate";
-
-const checkPasswordIsValid: (
-  password: string,
-  confirmedPassword: string
-) => boolean = (password, confirmedPassword) => {
-	return password !== confirmedPassword;
-};
+import {
+	checkEmailFormat,
+	checkInputLength,
+	checkPasswordIsValid
+} from "src/utilities/validate";
 
 const Register = () => {
 	const formRef = useRef<CustomHTMLFormElement>(null);

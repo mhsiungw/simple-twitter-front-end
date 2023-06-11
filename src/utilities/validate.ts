@@ -19,4 +19,11 @@ const checkEmailFormat = (userInput: string) => {
 	return null;
 };
 
-export { checkInputLength, checkEmailFormat };
+const checkPasswordIsValid: (
+  password: string,
+  confirmedPassword: string
+) => boolean = (password, confirmedPassword) => {
+	return password !== confirmedPassword;
+};
+
+export { checkInputLength, checkEmailFormat, checkPasswordIsValid };
