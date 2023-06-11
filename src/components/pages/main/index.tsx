@@ -139,14 +139,6 @@ export const Main = () => {
 
 	return (
 		<div className={styles["main-page-container"]}>
-			<button
-				onClick={() =>
-					Notify.error(
-						"Test",
-					)
-				}>
-        Test
-			</button>
 			<div className={styles["side-bar-container"]}>
 				<SideBar />
 			</div>
