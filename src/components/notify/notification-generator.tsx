@@ -1,7 +1,6 @@
-import React, { ReactElement } from "react";
+import React from "react";
 import { createRoot, Root } from "react-dom/client";
 import NotificationContainer from "./components/notification-container";
-import Notification from "./components/notification";
 
 export interface NotifyGeneratorProps {
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -11,11 +10,18 @@ export interface NotifyGeneratorProps {
 	className?: string,
 }
 
-const notifications: ReactElement[] = [];
-let notificationCount = 0;
+export interface NotificationProps {
+	icon: string,
+	text: string | number,
+	duration: number,
+	className?: string,
+	key: string,
+}
+
+const notifications: NotificationProps[] = [];
 let root: Root, dom: HTMLElement | null = null;
 
-const notificationGenerator = ({icon, text, duration, className}:NotifyGeneratorProps) => {
+const notificationGenerator = ({icon, text, duration, className}: NotifyGeneratorProps) => {
 	dom = document.getElementById("notification");
 
 	if (dom === null) {
@@ -25,24 +31,19 @@ const notificationGenerator = ({icon, text, duration, className}:NotifyGenerator
 		root = createRoot(dom);
 	}
 
-	notifications.push(
-		<Notification
-			icon={icon}
-			key={notificationCount}
-			text={text}
-			duration={duration}
-			className={className}
-			order={notifications.length}
-		/>
-	);
+	notifications.push({
+		icon,
+		key: crypto.randomUUID(),
+		text,
+		duration,
+		className
+	});
 
 	root.render(<NotificationContainer notifications={notifications} />);
-	notificationCount++;
 
 	setTimeout(() => {
 		notifications.shift();
 		root.render(<NotificationContainer notifications={notifications} />);
-		notificationCount = 0;
 	}, duration + 100);
 };
 

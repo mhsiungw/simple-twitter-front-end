@@ -12,6 +12,13 @@ body {
   font-size: $fz-400;
 }
 
+html {
+  scrollbar-width: none;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+
 a {
   font-size: inherit;
 }
