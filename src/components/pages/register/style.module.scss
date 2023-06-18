@@ -1,0 +1,64 @@
+@use "src/styles/variables.scss" as *;
+
+.button_text {
+  color: white;
+}
+
+.regist {
+  width: min(100% - 2rem, 33.75rem);
+  margin-inline: auto;
+  margin-block-start: min(5vh, 4.0625rem);
+
+  &__title {
+    text-align: center;
+
+    & h1 {
+      margin-block: clamp(1rem, 1rem + 0.75vh, 1.5625rem)
+        clamp(1.5rem, 1.5rem + 1.34vh, 2.5rem);
+      font-size: 1.4375rem;
+      line-height: 1.4;
+    }
+  }
+
+  &__formItem {
+    margin-block-end: clamp(1.5625rem, 1.5625rem + 0.42vh, 1.857rem);
+    border-radius: 4px;
+  }
+
+  &__submit {
+    background-color: $color-primary;
+    width: 100%;
+    margin-block-end: clamp(1.5625rem, 1.5625rem + 0.42vh, 1.857rem);
+    padding: 0.625rem;
+    border-radius: 100vw;
+    font-size: $fz-500;
+
+    &:hover {
+      background-color: rgba($color: $color-primary, $alpha: 0.69);
+    }
+
+    &:disabled {
+      background-color: #696969;
+      color: #faf0e6;
+      cursor: not-allowed;
+    }
+  }
+
+  &__cancel {
+    text-align: center;
+    color: $color-third;
+    font-size: $fz-500;
+
+    & a {
+      text-decoration: underline;
+
+      &:hover {
+        opacity: 0.75;
+      }
+      
+      &:is(:active, :visited) {
+        color: currentColor
+      }
+    }
+  }
+}
