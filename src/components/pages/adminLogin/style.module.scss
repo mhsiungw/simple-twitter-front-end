@@ -1,0 +1,44 @@
+.login-wrap {
+  margin: 0 auto;
+  padding-top: 60px;
+  width: 540px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .logo {
+    width: 50px;
+    height: 50px;
+  }
+  .login-title {
+    margin-top: 20px;
+    color: #1c1c1c;
+    font-size: 23px;
+    font-weight: 700;
+  }
+  .form-wrapper {
+    margin-top: 40px;
+    width: 540px;
+  }
+  .button-wrapper {
+    width: 100%;
+    button {
+      color: #fff;
+    }
+  }
+  .links {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+    color: #0099ff;
+    font-size: 18px;
+    font-weight: 700;
+    &:hover {
+      color: rgba($color: #0099ff, $alpha: 0.8);
+    }
+    .link {
+      height: 25px;
+      border-bottom: 1px solid #0099ff;
+      cursor: pointer;
+    }
+  }
+}

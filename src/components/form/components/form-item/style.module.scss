@@ -4,24 +4,24 @@
 }
 
 .input-item {
-	display: flex;
-	flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-	background-color: #F5F8FA;
-	border-radius: 4px 4px 0px 0px;
+  background-color: #f5f8fa;
+  border-radius: 4px 4px 0px 0px;
 
-	padding: 2.5px 0 0 10px;
+  padding: 2.5px 0 0 10px;
 
-	label {
-		color: #657786;
-		font-size: 15px;
-	}
+  label {
+    color: #657786;
+    font-size: 15px;
+  }
 
-	input {
-		background-color: #F5F8FA;
+  input {
+    background-color: #f5f8fa;
 
-		border: none;
-		outline: none;
+    border: none;
+    outline: none;
 
 		color: #1C1C1C;
 		font-family: 'Noto Sans TC';
@@ -38,16 +38,16 @@
 }
 
 .status-bar {
-	height: 3px;
-	background-color: #657786;
+  height: 3px;
+  background-color: #657786;
 
-	&.error {
-		background-color: #FC5A5A;
-	}
+  &.error {
+    background-color: #fc5a5a;
+  }
 }
 
 .error-message {
-	margin-top: 5px;
+  margin-top: 5px;
 
 	color: #FC5A5A;
 	font-weight: 500;
